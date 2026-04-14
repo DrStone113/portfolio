@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planex – Demo</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=K2D:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="planex.css" />
+</head>
+
+<body class="planex-body">
+
+    <nav class="demo-nav">
+        <a href="index.html">← Back</a>
+        <span class="nav-title">📅 Planex</span>
+        <a href="http://drstone113.infinityfree.me/Planex/public" target="_blank">Live ↗</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="demo-hero planex-hero">
+        <div class="planex-bg-blob"></div>
+        <div class="demo-hero-content reveal">
+            <div class="planex-logo-row">
+                <img src="assets/planex/logo.png" alt="Planex logo" class="planex-logo" />
+                <h1>Planex</h1>
+            </div>
+            <p>A personal task manager with a brain. Smart free-slot finder, Firebase push notifications, and a clean
+                calendar view — all in PHP.</p>
+            <div class="tech-stack-list">
+                <span class="tech-tag" style="color:var(--blue);border-color:rgba(0,175,239,0.3)">PHP 8</span>
+                <span class="tech-tag" style="color:#4479A1;border-color:rgba(68,121,161,0.3)">MySQL</span>
+                <span class="tech-tag" style="color:#FFCA28;border-color:rgba(255,202,40,0.3)">Firebase FCM</span>
+                <span class="tech-tag">HTML · CSS · JS</span>
+            </div>
+            <a href="http://drstone113.infinityfree.me/Planex/public" target="_blank" class="hero-cta"
+                style="margin-top:24px">View Live Site ↗</a>
+        </div>
+        <div class="planex-banner-img reveal">
+            <img src="assets/planex/banner-img.svg" alt="Planex banner" />
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <div class="demo-section reveal">
+        <h2>Features</h2>
+        <div class="feature-grid">
+            <div class="feature-item planex-fi">
+                <div class="fi-icon">✅</div>
+                <h4>Task Management</h4>
+                <p>Create, edit, delete tasks with priority levels (High/Medium/Low) and status tracking.</p>
+            </div>
+            <div class="feature-item planex-fi">
+                <div class="fi-icon">🔍</div>
+                <h4>Smart Time-Slot Finder</h4>
+                <p>Automatically finds free windows in your schedule based on existing tasks.</p>
+            </div>
+            <div class="feature-item planex-fi">
+                <div class="fi-icon">📆</div>
+                <h4>Calendar View</h4>
+                <p>Monthly calendar with task indicators and visual urgency highlighting for tasks due within 48h.</p>
+            </div>
+            <div class="feature-item planex-fi">
+                <div class="fi-icon">🔔</div>
+                <h4>Push Notifications</h4>
+                <p>Browser-based push via Firebase FCM. Reminders 30 minutes before task start/end.</p>
+            </div>
+            <div class="feature-item planex-fi">
+                <div class="fi-icon">🎨</div>
+                <h4>Custom Categories</h4>
+                <p>Color-coded categories auto-created on registration. Fully customizable.</p>
+            </div>
+            <div class="feature-item planex-fi">
+                <div class="fi-icon">🛡️</div>
+                <h4>Admin Console</h4>
+                <p>View all tasks, manage users — add, lock/unlock, delete. Role-based access.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MOCKUP: Dashboard -->
+    <div class="demo-section reveal">
+        <h2>Dashboard Preview</h2>
+        <div class="screen-mockup">
+            <div class="screen-bar">
+                <div class="screen-dot red"></div>
+                <div class="screen-dot yellow"></div>
+                <div class="screen-dot green"></div>
+                <span style="margin-left:12px;font-size:12px;color:#666">dashboard.php</span>
+            </div>
+            <div class="screen-body planex-dashboard-mock">
+                <div class="mock-sidebar">
+                    <div class="mock-logo">📅 Planex</div>
+                    <div class="mock-nav-item active">Dashboard</div>
+                    <div class="mock-nav-item">Add Task</div>
+                    <div class="mock-nav-item">Find Slot</div>
+                    <div class="mock-nav-item">Categories</div>
+                    <div class="mock-nav-item">Notifications</div>
+                </div>
+                <div class="mock-main">
+                    <div class="mock-stats-row">
+                        <div class="mock-stat blue"><span class="stat-num">12</span><span
+                                class="stat-label">Total</span></div>
+                        <div class="mock-stat green"><span class="stat-num">5</span><span class="stat-label">Done</span>
+                        </div>
+                        <div class="mock-stat orange"><span class="stat-num">4</span><span class="stat-label">In
+                                Progress</span></div>
+                        <div class="mock-stat red"><span class="stat-num">3</span><span
+                                class="stat-label">Overdue</span></div>
+                    </div>
+                    <div class="mock-tasks">
+                        <div class="mock-task high"><span class="priority-dot"></span>Submit project report <span
+                                class="task-badge high-badge">High</span></div>
+                        <div class="mock-task med"><span class="priority-dot"></span>Review pull requests <span
+                                class="task-badge med-badge">Medium</span></div>
+                        <div class="mock-task low"><span class="priority-dot"></span>Update documentation <span
+                                class="task-badge low-badge">Low</span></div>
+                        <div class="mock-task done"><span class="priority-dot done-dot"></span><s>Setup Firebase FCM</s>
+                            <span class="task-badge done-badge">Done</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MOCKUP: Find Time Slot -->
+    <div class="demo-section reveal">
+        <h2>Smart Time-Slot Finder</h2>
+        <div class="screen-mockup">
+            <div class="screen-bar">
+                <div class="screen-dot red"></div>
+                <div class="screen-dot yellow"></div>
+                <div class="screen-dot green"></div>
+                <span style="margin-left:12px;font-size:12px;color:#666">find_time_slot.php</span>
+            </div>
+            <div class="screen-body planex-slot-mock">
+                <div class="slot-form">
+                    <div class="slot-field"><label>Duration (minutes)</label>
+                        <div class="slot-input">90</div>
+                    </div>
+                    <div class="slot-field"><label>Search from</label>
+                        <div class="slot-input">2025-04-14 08:00</div>
+                    </div>
+                    <div class="slot-field"><label>Search until</label>
+                        <div class="slot-input">2025-04-14 22:00</div>
+                    </div>
+                    <div class="slot-btn">🔍 Find Free Slots</div>
+                </div>
+                <div class="slot-results">
+                    <div class="slot-result available">✅ 09:30 – 11:00 <span>Free</span></div>
+                    <div class="slot-result available">✅ 13:00 – 14:30 <span>Free</span></div>
+                    <div class="slot-result busy">🔴 15:00 – 16:30 <span>Busy</span></div>
+                    <div class="slot-result available">✅ 17:00 – 18:30 <span>Free</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Made with ☕ somewhere in Can Tho · 2025</p>
+    </footer>
+    <script src="main.js"></script>
+</body>
+
+</html>

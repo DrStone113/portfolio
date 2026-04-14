@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Helm – Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="helm.css" />
+</head>
+
+<body class="helm-body">
+
+    <nav class="demo-nav">
+        <a href="index.html">← Back</a>
+        <span class="nav-title">🪖 Helm</span>
+        <span style="color:#555577">React 19 · Node.js · MongoDB</span>
+    </nav>
+
+    <!-- HERO -->
+    <section class="demo-hero helm-hero">
+        <div class="helm-particles" id="helmParticles"></div>
+        <div class="demo-hero-content reveal">
+            <h1>🪖 <span style="color:#34d399">Helm</span></h1>
+            <p>Collaborative project management for modern teams. Multi-workspace, role-based access, Recharts dashboard
+                — built with React 19 and Node.js.</p>
+            <div class="tech-stack-list">
+                <span class="tech-tag" style="color:#61DAFB;border-color:rgba(97,218,251,0.3)">React 19</span>
+                <span class="tech-tag" style="color:#339933;border-color:rgba(51,153,51,0.3)">Node.js</span>
+                <span class="tech-tag" style="color:#47A248;border-color:rgba(71,162,72,0.3)">MongoDB</span>
+                <span class="tech-tag" style="color:#06B6D4;border-color:rgba(6,182,212,0.3)">Tailwind CSS</span>
+                <span class="tech-tag" style="color:#764ABC;border-color:rgba(118,74,188,0.3)">Redux Toolkit</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- DASHBOARD MOCKUP -->
+    <div class="demo-section reveal">
+        <h2>Dashboard</h2>
+        <div class="screen-mockup">
+            <div class="screen-bar">
+                <div class="screen-dot red"></div>
+                <div class="screen-dot yellow"></div>
+                <div class="screen-dot green"></div>
+                <span style="margin-left:12px;font-size:12px;color:#666">Dashboard.jsx</span>
+            </div>
+            <div class="screen-body helm-dashboard">
+                <div class="helm-sidebar">
+                    <div class="helm-ws-name">🪖 My Workspace</div>
+                    <div class="helm-nav active">📊 Dashboard</div>
+                    <div class="helm-nav">📁 Projects</div>
+                    <div class="helm-nav">✅ Tasks</div>
+                    <div class="helm-nav">👥 Team</div>
+                    <div class="helm-nav">🗑️ Trash</div>
+                </div>
+                <div class="helm-main">
+                    <div class="helm-stats-row">
+                        <div class="helm-stat"><span class="hs-num" style="color:#34d399">8</span><span
+                                class="hs-label">Projects</span></div>
+                        <div class="helm-stat"><span class="hs-num" style="color:#60a5fa">34</span><span
+                                class="hs-label">Tasks</span></div>
+                        <div class="helm-stat"><span class="hs-num" style="color:#fbbf24">12</span><span
+                                class="hs-label">In Progress</span></div>
+                        <div class="helm-stat"><span class="hs-num" style="color:#f87171">3</span><span
+                                class="hs-label">Overdue</span></div>
+                    </div>
+                    <!-- Mini bar chart -->
+                    <div class="helm-chart">
+                        <div class="chart-label">Task completion this week</div>
+                        <div class="chart-bars">
+                            <div class="chart-col">
+                                <div class="chart-bar" style="height:40%"></div><span>Mon</span>
+                            </div>
+                            <div class="chart-col">
+                                <div class="chart-bar" style="height:70%"></div><span>Tue</span>
+                            </div>
+                            <div class="chart-col">
+                                <div class="chart-bar" style="height:55%"></div><span>Wed</span>
+                            </div>
+                            <div class="chart-col">
+                                <div class="chart-bar" style="height:90%"></div><span>Thu</span>
+                            </div>
+                            <div class="chart-col">
+                                <div class="chart-bar" style="height:60%"></div><span>Fri</span>
+                            </div>
+                            <div class="chart-col">
+                                <div class="chart-bar" style="height:30%"></div><span>Sat</span>
+                            </div>
+                            <div class="chart-col">
+                                <div class="chart-bar" style="height:20%"></div><span>Sun</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KANBAN MOCKUP -->
+    <div class="demo-section reveal">
+        <h2>Task Board</h2>
+        <div class="screen-mockup">
+            <div class="screen-bar">
+                <div class="screen-dot red"></div>
+                <div class="screen-dot yellow"></div>
+                <div class="screen-dot green"></div>
+                <span style="margin-left:12px;font-size:12px;color:#666">Tasks.jsx – Kanban View</span>
+            </div>
+            <div class="screen-body helm-kanban">
+                <div class="kanban-col">
+                    <div class="kanban-header todo">📋 Todo <span class="col-count">4</span></div>
+                    <div class="kanban-card">
+                        <div class="kc-title">Design landing page</div>
+                        <div class="kc-meta"><span class="kc-priority high">High</span><span class="kc-assign">KT</span>
+                        </div>
+                    </div>
+                    <div class="kanban-card">
+                        <div class="kc-title">Write API docs</div>
+                        <div class="kc-meta"><span class="kc-priority med">Medium</span><span
+                                class="kc-assign">NB</span></div>
+                    </div>
+                </div>
+                <div class="kanban-col">
+                    <div class="kanban-header inprog">⚡ In Progress <span class="col-count">3</span></div>
+                    <div class="kanban-card active-card">
+                        <div class="kc-title">Build auth module</div>
+                        <div class="kc-meta"><span class="kc-priority high">High</span><span class="kc-assign">KT</span>
+                        </div>
+                    </div>
+                    <div class="kanban-card">
+                        <div class="kc-title">Setup MongoDB schemas</div>
+                        <div class="kc-meta"><span class="kc-priority med">Medium</span><span
+                                class="kc-assign">NB</span></div>
+                    </div>
+                </div>
+                <div class="kanban-col">
+                    <div class="kanban-header done-col">✅ Completed <span class="col-count">5</span></div>
+                    <div class="kanban-card done-card">
+                        <div class="kc-title"><s>Init project repo</s></div>
+                        <div class="kc-meta"><span class="kc-priority low">Low</span><span class="kc-assign">KT</span>
+                        </div>
+                    </div>
+                    <div class="kanban-card done-card">
+                        <div class="kc-title"><s>Configure CI/CD</s></div>
+                        <div class="kc-meta"><span class="kc-priority med">Medium</span><span
+                                class="kc-assign">NB</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="demo-section reveal">
+        <h2>Features</h2>
+        <div class="feature-grid">
+            <div class="feature-item" style="border-color:rgba(52,211,153,0.2)">
+                <div class="fi-icon">🏢</div>
+                <h4>Multi-Workspace</h4>
+                <p>Owner and member roles per workspace. Isolated project spaces.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(52,211,153,0.2)">
+                <div class="fi-icon">📊</div>
+                <h4>Recharts Dashboard</h4>
+                <p>Visual statistics with bar charts, completion rates, and summaries.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(52,211,153,0.2)">
+                <div class="fi-icon">🔀</div>
+                <h4>Subtasks & Activity</h4>
+                <p>Nested subtasks, activity log, file assets, and external links per task.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(52,211,153,0.2)">
+                <div class="fi-icon">🗑️</div>
+                <h4>Soft Delete</h4>
+                <p>Trash with restore support for workspaces, projects, and tasks.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(52,211,153,0.2)">
+                <div class="fi-icon">🌙</div>
+                <h4>Dark Mode</h4>
+                <p>Full dark mode support with smooth theme switching.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(52,211,153,0.2)">
+                <div class="fi-icon">🔐</div>
+                <h4>Firebase Auth + JWT</h4>
+                <p>Firebase authentication on frontend, JWT stateless API on backend.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Made with ☕ somewhere in Can Tho · 2025</p>
+    </footer>
+    <script src="main.js"></script>
+    <script>
+        // Animate chart bars on scroll
+        const bars = document.querySelectorAll('.chart-bar');
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) bars.forEach(b => b.classList.add('animated')); });
+        }, { threshold: 0.5 });
+        const chart = document.querySelector('.helm-chart');
+        if (chart) io.observe(chart);
+    </script>
+</body>
+
+</html>

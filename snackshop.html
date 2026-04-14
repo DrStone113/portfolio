@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SnackShop – Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="snackshop.css" />
+</head>
+
+<body class="snack-body">
+
+    <nav class="demo-nav">
+        <a href="index.html">← Back</a>
+        <span class="nav-title">🍿 SnackShop</span>
+        <span style="color:#555577">ASP.NET · VB.NET</span>
+    </nav>
+
+    <!-- HERO -->
+    <section class="demo-hero snack-hero">
+        <div class="snack-bg"></div>
+        <div class="demo-hero-content reveal">
+            <h1><span style="color:#E4002B">Snack</span><span style="color:#FFC72C">Shop</span></h1>
+            <p>Full-featured snack food e-commerce. Cart, checkout, order history, admin panel — built with ASP.NET Web
+                Forms and VB.NET.</p>
+            <div class="tech-stack-list">
+                <span class="tech-tag" style="color:#512BD4;border-color:rgba(81,43,212,0.3)">ASP.NET Web Forms</span>
+                <span class="tech-tag" style="color:#512BD4;border-color:rgba(81,43,212,0.3)">VB.NET</span>
+                <span class="tech-tag" style="color:#CC2927;border-color:rgba(204,41,39,0.3)">SQL Server</span>
+                <span class="tech-tag" style="color:#7952B3;border-color:rgba(121,82,179,0.3)">Bootstrap 5</span>
+            </div>
+        </div>
+        <div class="snack-floating-items" id="snackItems"></div>
+    </section>
+
+    <!-- PRODUCT GRID MOCKUP -->
+    <div class="demo-section reveal">
+        <h2>Product Catalog</h2>
+        <div class="snack-product-grid">
+            <div class="snack-card">
+                <div class="snack-img">🍿</div>
+                <div class="snack-info">
+                    <div class="snack-name">Classic Popcorn</div>
+                    <div class="snack-price">25,000 ₫</div>
+                    <div class="snack-desc">Buttery, crunchy, perfect for movie night.</div>
+                    <button class="snack-btn">Add to Cart 🛒</button>
+                </div>
+            </div>
+            <div class="snack-card">
+                <div class="snack-img">🍫</div>
+                <div class="snack-info">
+                    <div class="snack-name">Chocolate Bar</div>
+                    <div class="snack-price">35,000 ₫</div>
+                    <div class="snack-desc">Rich dark chocolate with hazelnut filling.</div>
+                    <button class="snack-btn">Add to Cart 🛒</button>
+                </div>
+            </div>
+            <div class="snack-card">
+                <div class="snack-img">🥨</div>
+                <div class="snack-info">
+                    <div class="snack-name">Salted Pretzel</div>
+                    <div class="snack-price">20,000 ₫</div>
+                    <div class="snack-desc">Crispy twisted pretzel with sea salt.</div>
+                    <button class="snack-btn">Add to Cart 🛒</button>
+                </div>
+            </div>
+            <div class="snack-card">
+                <div class="snack-img">🍬</div>
+                <div class="snack-info">
+                    <div class="snack-name">Gummy Bears</div>
+                    <div class="snack-price">18,000 ₫</div>
+                    <div class="snack-desc">Fruity, chewy, colorful gummy bears.</div>
+                    <button class="snack-btn">Add to Cart 🛒</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CART MOCKUP -->
+    <div class="demo-section reveal">
+        <h2>Shopping Cart</h2>
+        <div class="screen-mockup">
+            <div class="screen-bar">
+                <div class="screen-dot red"></div>
+                <div class="screen-dot yellow"></div>
+                <div class="screen-dot green"></div>
+                <span style="margin-left:12px;font-size:12px;color:#666">Cart.aspx</span>
+            </div>
+            <div class="screen-body snack-cart-mock">
+                <table class="snack-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Qty</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🍿 Classic Popcorn</td>
+                            <td>25,000 ₫</td>
+                            <td><span class="qty-ctrl">− 2 +</span></td>
+                            <td>50,000 ₫</td>
+                        </tr>
+                        <tr>
+                            <td>🍫 Chocolate Bar</td>
+                            <td>35,000 ₫</td>
+                            <td><span class="qty-ctrl">− 1 +</span></td>
+                            <td>35,000 ₫</td>
+                        </tr>
+                        <tr>
+                            <td>🥨 Salted Pretzel</td>
+                            <td>20,000 ₫</td>
+                            <td><span class="qty-ctrl">− 3 +</span></td>
+                            <td>60,000 ₫</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="snack-cart-total">
+                    <span>Total:</span><span class="total-price">145,000 ₫</span>
+                    <button class="snack-checkout-btn">Checkout →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN MOCKUP -->
+    <div class="demo-section reveal">
+        <h2>Admin Dashboard</h2>
+        <div class="screen-mockup">
+            <div class="screen-bar">
+                <div class="screen-dot red"></div>
+                <div class="screen-dot yellow"></div>
+                <div class="screen-dot green"></div>
+                <span style="margin-left:12px;font-size:12px;color:#666">Admin/Dashboard.aspx</span>
+            </div>
+            <div class="screen-body snack-admin-mock">
+                <div class="admin-stats">
+                    <div class="admin-stat"><span class="as-num" style="color:#E4002B">48</span><span
+                            class="as-label">Orders Today</span></div>
+                    <div class="admin-stat"><span class="as-num" style="color:#FFC72C">1,240,000 ₫</span><span
+                            class="as-label">Revenue</span></div>
+                    <div class="admin-stat"><span class="as-num" style="color:#28a745">32</span><span
+                            class="as-label">Products</span></div>
+                    <div class="admin-stat"><span class="as-num" style="color:#00afef">156</span><span
+                            class="as-label">Customers</span></div>
+                </div>
+                <div class="admin-orders">
+                    <div class="admin-order-row header"><span>Order
+                            ID</span><span>Customer</span><span>Amount</span><span>Status</span></div>
+                    <div class="admin-order-row"><span>#1042</span><span>Nguyễn Văn A</span><span>145,000 ₫</span><span
+                            class="status pending">Pending</span></div>
+                    <div class="admin-order-row"><span>#1041</span><span>Trần Thị B</span><span>80,000 ₫</span><span
+                            class="status shipped">Shipped</span></div>
+                    <div class="admin-order-row"><span>#1040</span><span>Lê Văn C</span><span>210,000 ₫</span><span
+                            class="status delivered">Delivered</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="demo-section reveal">
+        <h2>Features</h2>
+        <div class="feature-grid">
+            <div class="feature-item" style="border-color:rgba(228,0,43,0.2)">
+                <div class="fi-icon">🛒</div>
+                <h4>Shopping Cart</h4>
+                <p>Add, update quantities, remove items. Real-time cart total calculation.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(228,0,43,0.2)">
+                <div class="fi-icon">💳</div>
+                <h4>Checkout</h4>
+                <p>Payment method selection, order confirmation, atomic SQL transaction.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(228,0,43,0.2)">
+                <div class="fi-icon">📦</div>
+                <h4>Order History</h4>
+                <p>Track all past orders with status updates from admin.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(228,0,43,0.2)">
+                <div class="fi-icon">🔐</div>
+                <h4>Auth & Roles</h4>
+                <p>SHA256 password hashing. Customer, Staff, Admin role-based access.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(228,0,43,0.2)">
+                <div class="fi-icon">🏪</div>
+                <h4>Admin Panel</h4>
+                <p>Manage products, orders, promotions, customers from a dedicated panel.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(228,0,43,0.2)">
+                <div class="fi-icon">⚡</div>
+                <h4>Performance</h4>
+                <p>HTTP gzip compression, static asset caching (7-day max-age), connection pooling.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Made with ☕ somewhere in Can Tho · 2025</p>
+    </footer>
+    <script src="main.js"></script>
+    <script>
+        // Animate add to cart buttons
+        document.querySelectorAll('.snack-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                this.textContent = '✅ Added!';
+                this.style.background = '#28a745';
+                setTimeout(() => { this.textContent = 'Add to Cart 🛒'; this.style.background = ''; }, 1500);
+            });
+        });
+    </script>
+</body>
+
+</html>

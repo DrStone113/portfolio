@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EbookStore – Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="ebookstore.css" />
+</head>
+
+<body class="ebook-body">
+
+    <nav class="demo-nav">
+        <a href="index.html">← Back</a>
+        <span class="nav-title">📚 EbookStore</span>
+        <a href="https://ebookstore.click/wordpress" target="_blank">Live ↗</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="demo-hero ebook-hero">
+        <div class="ebook-bg"></div>
+        <div class="demo-hero-content reveal">
+            <h1>📚 <span style="color:#a78bfa">EbookStore</span></h1>
+            <p>Multi-vendor ebook marketplace. Vendors list ebooks, customers browse and read in-browser via PDF.js.
+                PayOS payment, SEO, email notifications — on WordPress.</p>
+            <div class="tech-stack-list">
+                <span class="tech-tag" style="color:#21759B;border-color:rgba(33,117,155,0.3)">WordPress 6.8</span>
+                <span class="tech-tag" style="color:#96588A;border-color:rgba(150,88,138,0.3)">WooCommerce</span>
+                <span class="tech-tag" style="color:#777BB4;border-color:rgba(119,123,180,0.3)">PHP 8.4</span>
+                <span class="tech-tag" style="color:#003545;border-color:rgba(0,53,69,0.3)">MariaDB</span>
+            </div>
+            <a href="https://ebookstore.click/wordpress" target="_blank" class="hero-cta"
+                style="margin-top:24px;background:rgba(167,139,250,0.2);color:#a78bfa;border:1px solid rgba(167,139,250,0.3);box-shadow:none">View
+                Live Site ↗</a>
+        </div>
+    </section>
+
+    <!-- STOREFRONT MOCKUP -->
+    <div class="demo-section reveal">
+        <h2>Storefront</h2>
+        <div class="screen-mockup">
+            <div class="screen-bar">
+                <div class="screen-dot red"></div>
+                <div class="screen-dot yellow"></div>
+                <div class="screen-dot green"></div>
+                <span style="margin-left:12px;font-size:12px;color:#666">ebookstore.click/wordpress</span>
+            </div>
+            <div class="screen-body ebook-storefront">
+                <div class="ebook-nav-bar">
+                    <span class="ebook-brand">📚 EbookStore</span>
+                    <div class="ebook-nav-links"><span>Shop</span><span>Vendors</span><span>Categories</span></div>
+                    <span class="ebook-cart">🛒 2</span>
+                </div>
+                <div class="ebook-hero-banner">
+                    <div class="ebh-text">
+                        <div class="ebh-title">Discover & Read Ebooks</div>
+                        <div class="ebh-sub">Thousands of titles from independent vendors</div>
+                        <div class="ebh-btn">Browse Now →</div>
+                    </div>
+                </div>
+                <div class="ebook-grid">
+                    <div class="ebook-card">
+                        <div class="ebook-cover" style="background:linear-gradient(135deg,#667eea,#764ba2)">📖</div>
+                        <div class="ebook-meta">
+                            <div class="em-title">Clean Code</div>
+                            <div class="em-vendor">by TechBooks</div>
+                            <div class="em-price">89,000 ₫</div>
+                        </div>
+                    </div>
+                    <div class="ebook-card">
+                        <div class="ebook-cover" style="background:linear-gradient(135deg,#f093fb,#f5576c)">📕</div>
+                        <div class="ebook-meta">
+                            <div class="em-title">Design Patterns</div>
+                            <div class="em-vendor">by DevStore</div>
+                            <div class="em-price">120,000 ₫</div>
+                        </div>
+                    </div>
+                    <div class="ebook-card">
+                        <div class="ebook-cover" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">📗</div>
+                        <div class="ebook-meta">
+                            <div class="em-title">Vue 3 Handbook</div>
+                            <div class="em-vendor">by WebDev</div>
+                            <div class="em-price">75,000 ₫</div>
+                        </div>
+                    </div>
+                    <div class="ebook-card">
+                        <div class="ebook-cover" style="background:linear-gradient(135deg,#43e97b,#38f9d7)">📘</div>
+                        <div class="ebook-meta">
+                            <div class="em-title">SQL Mastery</div>
+                            <div class="em-vendor">by DataPro</div>
+                            <div class="em-price">95,000 ₫</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF VIEWER MOCKUP -->
+    <div class="demo-section reveal">
+        <h2>In-Browser PDF Reader</h2>
+        <div class="screen-mockup">
+            <div class="screen-bar">
+                <div class="screen-dot red"></div>
+                <div class="screen-dot yellow"></div>
+                <div class="screen-dot green"></div>
+                <span style="margin-left:12px;font-size:12px;color:#666">PDF.js Viewer – Clean Code</span>
+            </div>
+            <div class="screen-body ebook-pdf-mock">
+                <div class="pdf-toolbar">
+                    <span>⬅ Prev</span>
+                    <span class="pdf-page">Page 1 / 464</span>
+                    <span>Next ➡</span>
+                    <span class="pdf-zoom">🔍 100%</span>
+                </div>
+                <div class="pdf-page-view">
+                    <div class="pdf-content">
+                        <div class="pdf-chapter">Chapter 1: Clean Code</div>
+                        <div class="pdf-para">There are two things about writing clean code: knowing what clean code is,
+                            and knowing how to write it. Learning to write clean code is hard work. It requires more
+                            than just the knowledge of principles and patterns...</div>
+                        <div class="pdf-para" style="opacity:0.5">You must sweat over it. You must practice it yourself,
+                            and watch yourself fail. You must watch others practice it and see how they fail...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VENDOR DASHBOARD MOCKUP -->
+    <div class="demo-section reveal">
+        <h2>Vendor Dashboard (WCFM)</h2>
+        <div class="screen-mockup">
+            <div class="screen-bar">
+                <div class="screen-dot red"></div>
+                <div class="screen-dot yellow"></div>
+                <div class="screen-dot green"></div>
+                <span style="margin-left:12px;font-size:12px;color:#666">Vendor Dashboard – TechBooks Store</span>
+            </div>
+            <div class="screen-body ebook-vendor-mock">
+                <div class="vendor-stats">
+                    <div class="vs-item"><span class="vs-num" style="color:#a78bfa">24</span><span
+                            class="vs-label">Ebooks Listed</span></div>
+                    <div class="vs-item"><span class="vs-num" style="color:#34d399">1,240,000 ₫</span><span
+                            class="vs-label">Revenue</span></div>
+                    <div class="vs-item"><span class="vs-num" style="color:#60a5fa">87</span><span
+                            class="vs-label">Orders</span></div>
+                    <div class="vs-item"><span class="vs-num" style="color:#fbbf24">4.8 ⭐</span><span
+                            class="vs-label">Rating</span></div>
+                </div>
+                <div class="vendor-products">
+                    <div class="vp-row header"><span>Title</span><span>Price</span><span>Sales</span><span>Status</span>
+                    </div>
+                    <div class="vp-row"><span>Clean Code</span><span>89,000 ₫</span><span>34</span><span
+                            class="vp-status active">Active</span></div>
+                    <div class="vp-row"><span>Refactoring</span><span>110,000 ₫</span><span>21</span><span
+                            class="vp-status active">Active</span></div>
+                    <div class="vp-row"><span>SOLID Principles</span><span>65,000 ₫</span><span>12</span><span
+                            class="vp-status draft">Draft</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="demo-section reveal">
+        <h2>Features</h2>
+        <div class="feature-grid">
+            <div class="feature-item" style="border-color:rgba(167,139,250,0.2)">
+                <div class="fi-icon">🏪</div>
+                <h4>Multi-Vendor</h4>
+                <p>Vendor registration, storefronts, and dashboards via Dokan + WCFM.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(167,139,250,0.2)">
+                <div class="fi-icon">📄</div>
+                <h4>PDF Preview</h4>
+                <p>Read ebooks in-browser via PDF.js Viewer Shortcode. No download needed.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(167,139,250,0.2)">
+                <div class="fi-icon">💳</div>
+                <h4>PayOS Payment</h4>
+                <p>Vietnamese payment gateway integration for seamless checkout.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(167,139,250,0.2)">
+                <div class="fi-icon">📧</div>
+                <h4>Email Notifications</h4>
+                <p>WP Mail SMTP + SureMails for reliable transactional and marketing emails.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(167,139,250,0.2)">
+                <div class="fi-icon">🔍</div>
+                <h4>SEO</h4>
+                <p>SureRank plugin for on-page SEO optimization and meta management.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(167,139,250,0.2)">
+                <div class="fi-icon">⚡</div>
+                <h4>Performance</h4>
+                <p>WP Super Cache for page caching. Deployed on IIS + Windows Server.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Made with ☕ somewhere in Can Tho · 2025</p>
+    </footer>
+    <script src="main.js"></script>
+</body>
+
+</html>

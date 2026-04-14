@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuanLiSV – Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="quanlisv.css" />
+</head>
+
+<body class="qlsv-body">
+
+    <nav class="demo-nav">
+        <a href="index.html">← Back</a>
+        <span class="nav-title">🎓 QuanLiSV</span>
+        <span style="color:#555577">ASP.NET · C# · SQL Server</span>
+    </nav>
+
+    <!-- HERO -->
+    <section class="demo-hero qlsv-hero">
+        <div class="qlsv-bg"></div>
+        <div class="demo-hero-content reveal">
+            <h1>🎓 <span style="color:#fbbf24">QuanLiSV</span></h1>
+            <p>Student grade management for lecturers. Log in with staff ID, view assigned courses, enter and update
+                scores — with SQL MERGE upsert for safe re-submission.</p>
+            <div class="tech-stack-list">
+                <span class="tech-tag" style="color:#512BD4;border-color:rgba(81,43,212,0.3)">ASP.NET Web Forms</span>
+                <span class="tech-tag" style="color:#512BD4;border-color:rgba(81,43,212,0.3)">C#</span>
+                <span class="tech-tag" style="color:#CC2927;border-color:rgba(204,41,39,0.3)">SQL Server</span>
+                <span class="tech-tag" style="color:#7952B3;border-color:rgba(121,82,179,0.3)">Bootstrap 5</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- DASHBOARD MOCKUP -->
+    <div class="demo-section reveal">
+        <h2>Course Dashboard</h2>
+        <div class="screen-mockup">
+            <div class="screen-bar">
+                <div class="screen-dot red"></div>
+                <div class="screen-dot yellow"></div>
+                <div class="screen-dot green"></div>
+                <span style="margin-left:12px;font-size:12px;color:#666">Default.aspx – Nguyễn Văn Cường</span>
+            </div>
+            <div class="screen-body qlsv-dashboard">
+                <div class="qlsv-header-bar">
+                    <span>👤 Nguyễn Văn Cường (001)</span>
+                    <span class="qlsv-logout">Đăng xuất</span>
+                </div>
+                <div class="qlsv-title">Danh sách lớp giảng dạy</div>
+                <div class="qlsv-cards">
+                    <div class="qlsv-course-card">
+                        <div class="qc-icon">📘</div>
+                        <div class="qc-info">
+                            <div class="qc-subject">Lập trình Web</div>
+                            <div class="qc-class">Lớp: CT001</div>
+                        </div>
+                        <div class="qc-btn">Nhập điểm →</div>
+                    </div>
+                    <div class="qlsv-course-card">
+                        <div class="qc-icon">📗</div>
+                        <div class="qc-info">
+                            <div class="qc-subject">Cơ sở dữ liệu</div>
+                            <div class="qc-class">Lớp: CT002</div>
+                        </div>
+                        <div class="qc-btn">Nhập điểm →</div>
+                    </div>
+                    <div class="qlsv-course-card">
+                        <div class="qc-icon">📙</div>
+                        <div class="qc-info">
+                            <div class="qc-subject">Mạng máy tính</div>
+                            <div class="qc-class">Lớp: CT003</div>
+                        </div>
+                        <div class="qc-btn">Nhập điểm →</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GRADE ENTRY MOCKUP -->
+    <div class="demo-section reveal">
+        <h2>Grade Entry</h2>
+        <div class="screen-mockup">
+            <div class="screen-bar">
+                <div class="screen-dot red"></div>
+                <div class="screen-dot yellow"></div>
+                <div class="screen-dot green"></div>
+                <span style="margin-left:12px;font-size:12px;color:#666">NhapDiem.aspx – Lập trình Web · CT001</span>
+            </div>
+            <div class="screen-body qlsv-grade-mock">
+                <div class="qlsv-grade-title">Nhập điểm thi – Lập trình Web (CT001)</div>
+                <table class="qlsv-table">
+                    <thead>
+                        <tr>
+                            <th>MSSV</th>
+                            <th>Họ tên</th>
+                            <th>Điểm thi (0–10)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="gradeTable">
+                        <tr>
+                            <td>B2205001</td>
+                            <td>Nguyễn Văn An</td>
+                            <td><input class="grade-input" type="number" min="0" max="10" step="0.5" value="8.5" /></td>
+                        </tr>
+                        <tr>
+                            <td>B2205002</td>
+                            <td>Trần Thị Bình</td>
+                            <td><input class="grade-input" type="number" min="0" max="10" step="0.5" value="7.0" /></td>
+                        </tr>
+                        <tr>
+                            <td>B2205003</td>
+                            <td>Lê Hoàng Cường</td>
+                            <td><input class="grade-input" type="number" min="0" max="10" step="0.5" value=""
+                                    placeholder="—" /></td>
+                        </tr>
+                        <tr>
+                            <td>B2205004</td>
+                            <td>Phạm Minh Dũng</td>
+                            <td><input class="grade-input" type="number" min="0" max="10" step="0.5" value="9.0" /></td>
+                        </tr>
+                        <tr>
+                            <td>B2205005</td>
+                            <td>Hoàng Thị Em</td>
+                            <td><input class="grade-input" type="number" min="0" max="10" step="0.5" value="6.5" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="qlsv-save-row">
+                    <button class="qlsv-save-btn" id="saveBtn">💾 Lưu điểm</button>
+                    <span class="qlsv-hint">Sử dụng SQL MERGE — an toàn khi lưu lại nhiều lần</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DB SCHEMA -->
+    <div class="demo-section reveal">
+        <h2>Database Schema</h2>
+        <div class="qlsv-schema">
+            <div class="schema-table">
+                <div class="st-name">CanBo</div>
+                <div class="st-fields"><span>MaCB</span><span>TenCB</span><span>MatKhau</span></div>
+            </div>
+            <div class="schema-arrow">→</div>
+            <div class="schema-table">
+                <div class="st-name">GiangDay</div>
+                <div class="st-fields"><span>MaCB</span><span>MaMon</span><span>MaLop</span></div>
+            </div>
+            <div class="schema-arrow">→</div>
+            <div class="schema-table">
+                <div class="st-name">Diem</div>
+                <div class="st-fields"><span>MSSV</span><span>MaMon</span><span>DiemThi</span></div>
+            </div>
+        </div>
+        <div class="qlsv-schema" style="margin-top:12px">
+            <div class="schema-table">
+                <div class="st-name">MonHoc</div>
+                <div class="st-fields"><span>MaMon</span><span>TenMon</span></div>
+            </div>
+            <div class="schema-arrow">→</div>
+            <div class="schema-table">
+                <div class="st-name">Lop</div>
+                <div class="st-fields"><span>MaLop</span><span>TenLop</span></div>
+            </div>
+            <div class="schema-arrow">→</div>
+            <div class="schema-table">
+                <div class="st-name">SinhVien</div>
+                <div class="st-fields"><span>MSSV</span><span>HoTen</span><span>MaLop</span></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Made with ☕ somewhere in Can Tho · 2025</p>
+    </footer>
+    <script src="main.js"></script>
+    <script>
+        document.getElementById('saveBtn')?.addEventListener('click', function () {
+            this.textContent = '✅ Đã lưu!';
+            this.style.background = 'rgba(52,211,153,0.2)';
+            this.style.color = '#34d399';
+            this.style.borderColor = 'rgba(52,211,153,0.4)';
+            setTimeout(() => {
+                this.textContent = '💾 Lưu điểm';
+                this.style.background = '';
+                this.style.color = '';
+                this.style.borderColor = '';
+            }, 2000);
+        });
+        document.querySelectorAll('.grade-input').forEach(inp => {
+            inp.addEventListener('input', function () {
+                const v = parseFloat(this.value);
+                if (v > 10) this.value = 10;
+                if (v < 0) this.value = 0;
+                this.style.color = v >= 5 ? '#34d399' : '#f87171';
+            });
+            const v = parseFloat(inp.value);
+            if (!isNaN(v)) inp.style.color = v >= 5 ? '#34d399' : '#f87171';
+        });
+    </script>
+</body>
+
+</html>

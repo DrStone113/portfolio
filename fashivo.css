@@ -1,0 +1,70 @@
+.fashivo-body { background: #0d0a12; }
+
+.fashivo-hero {
+  background: radial-gradient(ellipse at 20% 60%, rgba(244,114,182,0.1) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 30%, rgba(167,139,250,0.08) 0%, transparent 50%), #0d0a12;
+  flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 60px; align-items: center;
+}
+.fashivo-bg {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(135deg, rgba(244,114,182,0.02) 0px, rgba(244,114,182,0.02) 1px, transparent 1px, transparent 30px);
+  pointer-events: none;
+}
+.fashivo-hero-img { max-width: 360px; z-index: 2; }
+.fashivo-hero-img img {
+  width: 100%; border-radius: 20px;
+  box-shadow: 0 0 60px rgba(244,114,182,0.2);
+  object-fit: cover; max-height: 400px;
+}
+
+/* Filters */
+.fashivo-filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+.fv-filter {
+  padding: 7px 18px; border-radius: 20px; border: 1px solid rgba(244,114,182,0.2);
+  background: transparent; color: #7777aa; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: all .2s; font-family: inherit;
+}
+.fv-filter:hover, .fv-filter.active {
+  background: rgba(244,114,182,0.15); color: #f472b6; border-color: rgba(244,114,182,0.4);
+}
+
+/* Product grid */
+.fashivo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+.fv-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(244,114,182,0.1);
+  border-radius: 16px; overflow: hidden; transition: transform .3s, box-shadow .3s;
+}
+.fv-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(244,114,182,0.15); }
+.fv-img {
+  height: 200px; background-size: cover; background-position: center;
+  background-color: rgba(244,114,182,0.05);
+}
+.fv-info { padding: 14px; }
+.fv-name { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+.fv-price { font-size: 16px; font-weight: 800; color: #f472b6; margin-bottom: 12px; }
+.fv-btn {
+  width: 100%; padding: 8px; border: 1px solid rgba(244,114,182,0.3);
+  background: rgba(244,114,182,0.1); color: #f472b6;
+  border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer;
+  transition: all .2s; font-family: inherit;
+}
+.fv-btn:hover { background: rgba(244,114,182,0.2); }
+
+/* Swagger mock */
+.fashivo-swagger { padding: 20px; }
+.swagger-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+.swagger-version { font-size: 12px; background: rgba(133,234,45,0.15); color: #85EA2D; padding: 2px 8px; border-radius: 8px; margin-left: 8px; }
+.swagger-group { margin-bottom: 16px; }
+.swagger-tag { font-size: 13px; font-weight: 700; color: #f472b6; margin-bottom: 8px; }
+.swagger-endpoint {
+  display: flex; align-items: center; gap: 10px;
+  padding: 7px 10px; border-radius: 8px; margin-bottom: 4px;
+  background: rgba(255,255,255,0.03); font-size: 12px;
+}
+.method { padding: 2px 8px; border-radius: 6px; font-weight: 700; font-size: 11px; min-width: 44px; text-align: center; }
+.method.get { background: rgba(96,165,250,0.2); color: #60a5fa; }
+.method.post { background: rgba(52,211,153,0.2); color: #34d399; }
+.method.put { background: rgba(251,191,36,0.2); color: #fbbf24; }
+.method.delete { background: rgba(248,113,113,0.2); color: #f87171; }
+.path { color: #ccc; font-family: monospace; }
+.desc { color: #7777aa; margin-left: auto; font-size: 11px; }

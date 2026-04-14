@@ -1,0 +1,109 @@
+.pixel-body { background: #0a0814; }
+
+.pixel-hero {
+  background: #1a2e1a; /* fallback trước khi canvas load */
+  flex-direction: column; gap: 40px;
+}
+.pixel-bg-layer {
+  position: absolute; inset: 0; pointer-events: none;
+  background: rgba(0,0,0,0.55);
+  z-index: 1;
+}
+/* canvas tiled background — set by JS */
+#pixelBgCanvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  image-rendering: pixelated;
+  z-index: 0;
+}
+.pixel-bg-img { display: none; } /* không dùng nữa */
+
+/* tất cả content phải trên overlay */
+.pixel-hero > * { position: relative; z-index: 2; }
+
+/* Text nổi trên tiled background */
+.pixel-hero .demo-hero-content h1 { color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,0.8); }
+.pixel-hero .demo-hero-content p  { color: #e0e0f0; text-shadow: 0 1px 6px rgba(0,0,0,0.7); }
+.pixel-hero .tech-tag             { background: rgba(0,0,0,0.4); color: #fff; border-color: rgba(255,255,255,0.3); }
+
+/* Canvas-based sprites — no background-image in CSS */
+.px-sprite { width: 64px; height: 64px; image-rendering: pixelated; display: block; }
+.pixel-sprites-row { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+
+/* Game screen */
+.pixel-game-screen { padding: 0; background: #1a1a2e; position: relative; min-height: 280px; overflow: hidden; }
+.pixel-hud {
+  display: flex; align-items: center; gap: 16px; padding: 8px 12px;
+  background: rgba(0,0,0,0.5); border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-size: 12px; position: relative; z-index: 10;
+}
+.hud-heart { font-size: 14px; }
+.hud-fruits { display: flex; align-items: center; gap: 6px; }
+.hud-fruit-icon { width: 20px; height: 20px; image-rendering: pixelated; }
+.hud-count { font-size: 12px; font-weight: 600; color: #fbbf24; }
+.hud-score { margin-left: auto; font-size: 12px; font-weight: 700; color: #c4b5fd; }
+
+.pixel-world { position: relative; height: 200px; overflow: hidden; }
+.pixel-bg-world {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center; opacity: 0.6;
+  /* background-image set inline */
+}
+.platform {
+  position: absolute;
+  background-size: 16px 16px; background-repeat: repeat-x;
+  image-rendering: pixelated; background-color: #3d5a3e;
+  /* background-image set inline */
+}
+
+/* Canvas game elements — layout only */
+.game-char  { position: absolute; image-rendering: pixelated; z-index: 2; }
+.game-fruit { position: absolute; image-rendering: pixelated; z-index: 2; }
+.game-enemy { position: absolute; image-rendering: pixelated; z-index: 2; }
+.platform   { position: absolute; z-index: 2; }
+@keyframes fruitBob { from { transform: translateY(0); } to { transform: translateY(-6px); } }
+
+.pixel-controls {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 16px; background: rgba(0,0,0,0.4);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.ctrl-joystick { font-size: 28px; opacity: 0.6; }
+.ctrl-btns { display: flex; gap: 8px; }
+.ctrl-btn {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: #ccc;
+}
+
+/* Characters grid */
+.pixel-chars-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.char-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(196,181,253,0.15);
+  border-radius: 16px; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 12px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.char-card:hover { border-color: rgba(196,181,253,0.4); box-shadow: 0 8px 24px rgba(196,181,253,0.1); }
+.char-sprite { width: 96px; height: 96px; image-rendering: pixelated; display: block; }
+.char-name { font-size: 13px; font-weight: 600; color: #c4b5fd; }
+
+/* Fruits showcase */
+.fruits-showcase { display: flex; flex-wrap: wrap; gap: 20px; }
+.fruit-item {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(196,181,253,0.1);
+  border-radius: 12px; padding: 16px 20px;
+  transition: transform .2s, border-color .2s;
+}
+.fruit-item:hover { transform: translateY(-4px) scale(1.05); border-color: rgba(196,181,253,0.3); }
+.showcase-fruit {
+  width: 48px; height: 48px;
+  image-rendering: pixelated; display: block;
+  animation: fruitBob 1.2s ease-in-out infinite alternate;
+}
+.fruit-item span { font-size: 11px; color: #7777aa; }
+
+@media (max-width: 640px) {
+  .pixel-chars-grid { grid-template-columns: repeat(2, 1fr); }
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashivo – Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="fashivo.css" />
+</head>
+
+<body class="fashivo-body">
+
+    <nav class="demo-nav">
+        <a href="index.html">← Back</a>
+        <span class="nav-title">👗 Fashivo</span>
+        <span style="color:#555577">Vue 3 · Node.js · PostgreSQL</span>
+    </nav>
+
+    <!-- HERO -->
+    <section class="demo-hero fashivo-hero">
+        <div class="fashivo-bg"></div>
+        <div class="demo-hero-content reveal">
+            <h1><span style="color:#f472b6">Fashivo</span></h1>
+            <p>Full-stack fashion e-commerce SPA. Browse by category, manage cart, Swagger API docs — Vue 3 + Pinia on
+                the front, Express + PostgreSQL on the back.</p>
+            <div class="tech-stack-list">
+                <span class="tech-tag" style="color:#4FC08D;border-color:rgba(79,192,141,0.3)">Vue 3</span>
+                <span class="tech-tag" style="color:#FFD859;border-color:rgba(255,216,89,0.3)">Pinia</span>
+                <span class="tech-tag" style="color:#339933;border-color:rgba(51,153,51,0.3)">Node.js</span>
+                <span class="tech-tag" style="color:#4169E1;border-color:rgba(65,105,225,0.3)">PostgreSQL</span>
+                <span class="tech-tag" style="color:#85EA2D;border-color:rgba(133,234,45,0.3)">Swagger</span>
+            </div>
+        </div>
+        <div class="fashivo-hero-img reveal">
+            <img src="assets/fashivo/women-capsule-wardrobe-racks-fashion-clothes-hanger-rail-female-clothes-wardrobe-clothing-o_166005-1333.jpg"
+                alt="Fashion" />
+        </div>
+    </section>
+
+    <!-- PRODUCT CATALOG MOCKUP -->
+    <div class="demo-section reveal">
+        <h2>Product Catalog</h2>
+        <div class="fashivo-filters">
+            <button class="fv-filter active">All</button>
+            <button class="fv-filter">Tops</button>
+            <button class="fv-filter">Bottoms</button>
+            <button class="fv-filter">Dresses</button>
+            <button class="fv-filter">Accessories</button>
+        </div>
+        <div class="fashivo-grid">
+            <div class="fv-card">
+                <div class="fv-img" style="background-image:url('assets/fashivo/2b27wk2r.png')">
+                </div>
+                <div class="fv-info">
+                    <div class="fv-name">Floral Blouse</div>
+                    <div class="fv-price">450,000 ₫</div><button class="fv-btn">Add to Cart</button>
+                </div>
+            </div>
+            <div class="fv-card">
+                <div class="fv-img" style="background-image:url('assets/fashivo/96aqdjh4.png')">
+                </div>
+                <div class="fv-info">
+                    <div class="fv-name">Slim Jeans</div>
+                    <div class="fv-price">620,000 ₫</div><button class="fv-btn">Add to Cart</button>
+                </div>
+            </div>
+            <div class="fv-card">
+                <div class="fv-img" style="background-image:url('assets/fashivo/a3rkgo5r.png')">
+                </div>
+                <div class="fv-info">
+                    <div class="fv-name">Summer Dress</div>
+                    <div class="fv-price">780,000 ₫</div><button class="fv-btn">Add to Cart</button>
+                </div>
+            </div>
+            <div class="fv-card">
+                <div class="fv-img" style="background-image:url('assets/fashivo/bsnp3jmb.png')">
+                </div>
+                <div class="fv-info">
+                    <div class="fv-name">Casual Tee</div>
+                    <div class="fv-price">280,000 ₫</div><button class="fv-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- API DOCS MOCKUP -->
+    <div class="demo-section reveal">
+        <h2>Swagger API Docs</h2>
+        <div class="screen-mockup">
+            <div class="screen-bar">
+                <div class="screen-dot red"></div>
+                <div class="screen-dot yellow"></div>
+                <div class="screen-dot green"></div>
+                <span style="margin-left:12px;font-size:12px;color:#666">localhost:3000/api-docs</span>
+            </div>
+            <div class="screen-body fashivo-swagger">
+                <div class="swagger-title">Fashivo API <span class="swagger-version">v1.0</span></div>
+                <div class="swagger-group">
+                    <div class="swagger-tag">🔐 auth</div>
+                    <div class="swagger-endpoint"><span class="method post">POST</span><span
+                            class="path">/api/v1/auth/signup</span><span class="desc">Register a new user</span></div>
+                    <div class="swagger-endpoint"><span class="method post">POST</span><span
+                            class="path">/api/v1/auth/login</span><span class="desc">Authenticate and receive
+                            token</span></div>
+                    <div class="swagger-endpoint"><span class="method get">GET</span><span
+                            class="path">/api/v1/auth/me</span><span class="desc">Get current user</span></div>
+                </div>
+                <div class="swagger-group">
+                    <div class="swagger-tag">👗 product</div>
+                    <div class="swagger-endpoint"><span class="method get">GET</span><span
+                            class="path">/api/v1/product</span><span class="desc">List all products</span></div>
+                    <div class="swagger-endpoint"><span class="method get">GET</span><span
+                            class="path">/api/v1/product/:id</span><span class="desc">Get product details</span></div>
+                    <div class="swagger-endpoint"><span class="method post">POST</span><span
+                            class="path">/api/v1/product</span><span class="desc">Create product (admin)</span></div>
+                </div>
+                <div class="swagger-group">
+                    <div class="swagger-tag">🛒 cart</div>
+                    <div class="swagger-endpoint"><span class="method get">GET</span><span
+                            class="path">/api/v1/cart</span><span class="desc">Get current user's cart</span></div>
+                    <div class="swagger-endpoint"><span class="method post">POST</span><span
+                            class="path">/api/v1/cart</span><span class="desc">Add item to cart</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="demo-section reveal">
+        <h2>Features</h2>
+        <div class="feature-grid">
+            <div class="feature-item" style="border-color:rgba(244,114,182,0.2)">
+                <div class="fi-icon">🛍️</div>
+                <h4>Browse & Filter</h4>
+                <p>Filter products by category with TanStack Vue Query for server state caching.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(244,114,182,0.2)">
+                <div class="fi-icon">🔐</div>
+                <h4>Auth & Profile</h4>
+                <p>JWT auth, password update, forgot/reset password flow.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(244,114,182,0.2)">
+                <div class="fi-icon">🛒</div>
+                <h4>Cart Management</h4>
+                <p>Add, update quantities, remove items. Pinia state management.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(244,114,182,0.2)">
+                <div class="fi-icon">🏪</div>
+                <h4>Admin Panel</h4>
+                <p>Add, edit, manage products and categories. Image upload via Multer.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(244,114,182,0.2)">
+                <div class="fi-icon">📋</div>
+                <h4>Swagger Docs</h4>
+                <p>Full OpenAPI spec. Interactive API documentation at /api-docs.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(244,114,182,0.2)">
+                <div class="fi-icon">🛡️</div>
+                <h4>Rate Limiting</h4>
+                <p>express-rate-limit + Zod validation on all endpoints.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Made with ☕ somewhere in Can Tho · 2025</p>
+    </footer>
+    <script src="main.js"></script>
+    <script>
+        document.querySelectorAll('.fv-filter').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.fv-filter').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        document.querySelectorAll('.fv-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                this.textContent = '✅ Added!';
+                this.style.background = 'rgba(52,211,153,0.2)';
+                this.style.color = '#34d399';
+                setTimeout(() => { this.textContent = 'Add to Cart'; this.style.background = ''; this.style.color = ''; }, 1500);
+            });
+        });
+    </script>
+</body>
+
+</html>

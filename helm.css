@@ -1,0 +1,76 @@
+.helm-body { background: #060d0d; }
+
+.helm-hero {
+  background: radial-gradient(ellipse at 30% 50%, rgba(16,185,129,0.1) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(6,182,212,0.08) 0%, transparent 50%), #060d0d;
+}
+.helm-particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+
+/* Dashboard */
+.helm-dashboard { display: flex; gap: 0; padding: 0; min-height: 280px; }
+.helm-sidebar {
+  width: 160px; background: rgba(16,185,129,0.05); border-right: 1px solid rgba(16,185,129,0.1);
+  padding: 16px 12px; flex-shrink: 0;
+}
+.helm-ws-name { font-size: 12px; font-weight: 700; color: #34d399; margin-bottom: 16px; }
+.helm-nav { font-size: 12px; padding: 7px 10px; border-radius: 8px; color: #7777aa; margin-bottom: 4px; cursor: default; }
+.helm-nav.active { background: rgba(16,185,129,0.15); color: #34d399; font-weight: 600; }
+.helm-main { flex: 1; padding: 16px; }
+.helm-stats-row { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.helm-stat {
+  flex: 1; min-width: 60px; background: rgba(255,255,255,0.04);
+  border-radius: 10px; padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.hs-num { font-size: 20px; font-weight: 800; }
+.hs-label { font-size: 10px; color: #7777aa; }
+
+/* Chart */
+.helm-chart { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 14px; }
+.chart-label { font-size: 11px; color: #7777aa; margin-bottom: 12px; }
+.chart-bars { display: flex; gap: 8px; align-items: flex-end; height: 80px; }
+.chart-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; justify-content: flex-end; }
+.chart-bar {
+  width: 100%; background: rgba(52,211,153,0.3); border-radius: 4px 4px 0 0;
+  transition: height 1s cubic-bezier(.22,1,.36,1), background .3s;
+  height: 0;
+}
+/* animated state handled by nth-child selectors below */
+.chart-col:nth-child(1) .chart-bar.animated { height: 40%; }
+.chart-col:nth-child(2) .chart-bar.animated { height: 70%; background: rgba(52,211,153,0.6); }
+.chart-col:nth-child(3) .chart-bar.animated { height: 55%; }
+.chart-col:nth-child(4) .chart-bar.animated { height: 90%; background: #34d399; }
+.chart-col:nth-child(5) .chart-bar.animated { height: 60%; }
+.chart-col:nth-child(6) .chart-bar.animated { height: 30%; }
+.chart-col:nth-child(7) .chart-bar.animated { height: 20%; }
+.chart-col span { font-size: 9px; color: #555577; }
+
+/* Kanban */
+.helm-kanban { display: flex; gap: 16px; padding: 20px; overflow-x: auto; min-height: 240px; }
+.kanban-col { flex: 1; min-width: 180px; }
+.kanban-header {
+  font-size: 12px; font-weight: 700; padding: 8px 12px; border-radius: 8px;
+  margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+}
+.kanban-header.todo { background: rgba(96,165,250,0.1); color: #60a5fa; }
+.kanban-header.inprog { background: rgba(251,191,36,0.1); color: #fbbf24; }
+.kanban-header.done-col { background: rgba(52,211,153,0.1); color: #34d399; }
+.col-count { margin-left: auto; background: rgba(255,255,255,0.1); border-radius: 10px; padding: 1px 7px; font-size: 11px; }
+.kanban-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px; padding: 10px 12px; margin-bottom: 8px;
+  transition: transform .2s, box-shadow .2s;
+}
+.kanban-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+.kanban-card.active-card { border-color: rgba(251,191,36,0.3); }
+.kanban-card.done-card { opacity: 0.5; }
+.kc-title { font-size: 12px; color: #ccc; margin-bottom: 8px; }
+.kc-meta { display: flex; align-items: center; justify-content: space-between; }
+.kc-priority { font-size: 10px; padding: 2px 8px; border-radius: 8px; font-weight: 600; }
+.kc-priority.high { background: rgba(248,113,113,0.2); color: #f87171; }
+.kc-priority.med { background: rgba(251,191,36,0.2); color: #fbbf24; }
+.kc-priority.low { background: rgba(96,165,250,0.2); color: #60a5fa; }
+.kc-assign {
+  width: 22px; height: 22px; border-radius: 50%; background: rgba(52,211,153,0.2);
+  color: #34d399; font-size: 10px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}

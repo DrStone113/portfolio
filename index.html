@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khang's Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=K2D:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg-grid"></div>
+        <div class="floating-fruits" id="floatingFruits"></div>
+        <div class="hero-content">
+            <canvas class="hero-sprite" id="heroSprite" width="32" height="32"></canvas>
+            <h1 class="hero-title">Hey, I'm <span class="accent">Khang</span> 👋</h1>
+            <p class="hero-sub">IT student @ Can Tho University · I build things that actually work.</p>
+            <div class="tech-pills">
+                <span>PHP</span><span>ASP.NET</span><span>Vue 3</span><span>React</span>
+                <span>Node.js</span><span>Flutter</span><span>MySQL</span><span>MongoDB</span>
+            </div>
+            <a href="#projects" class="hero-cta">See my work ↓</a>
+        </div>
+        <div class="hero-ground">
+            <div class="ground-runner-wrap" id="groundRunnerWrap">
+                <canvas class="ground-runner" id="groundRunner" width="32" height="32"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS GRID -->
+    <section class="projects" id="projects">
+        <h2 class="section-title">What I've shipped</h2>
+        <p class="section-sub">Not side projects. Real deployments.</p>
+        <div class="cards-grid">
+
+            <!-- Planex -->
+            <a href="planex.html" class="card card--planex reveal">
+                <div class="card-glow"></div>
+                <div class="card-icon">📅</div>
+                <div class="card-badge">PHP · MySQL · Firebase</div>
+                <h3>Planex</h3>
+                <p>Task manager with a brain. Smart free-slot finder + push notifications.</p>
+                <div class="card-tags"><span>Task Manager</span><span>Scheduler</span><span>FCM</span></div>
+                <div class="card-arrow">→</div>
+            </a>
+
+            <!-- EbookStore -->
+            <a href="ebookstore.html" class="card card--ebook reveal">
+                <div class="card-glow"></div>
+                <div class="card-icon">📚</div>
+                <div class="card-badge">WordPress · WooCommerce · Dokan</div>
+                <h3>EbookStore</h3>
+                <p>Multi-vendor ebook marketplace with PayOS payment & PDF preview.</p>
+                <div class="card-tags"><span>Marketplace</span><span>Multi-vendor</span><span>PayOS</span></div>
+                <div class="card-arrow">→</div>
+            </a>
+
+            <!-- SnackShop -->
+            <a href="snackshop.html" class="card card--snack reveal">
+                <div class="card-glow"></div>
+                <div class="card-icon">🍿</div>
+                <div class="card-badge">ASP.NET · VB.NET · SQL Server</div>
+                <h3>SnackShop</h3>
+                <p>Full e-commerce snack store. Cart, checkout, order history, admin panel.</p>
+                <div class="card-tags"><span>E-commerce</span><span>Admin Panel</span><span>Bootstrap 5</span></div>
+                <div class="card-arrow">→</div>
+            </a>
+
+            <!-- Helm -->
+            <a href="helm.html" class="card card--helm reveal">
+                <div class="card-glow"></div>
+                <div class="card-icon">🪖</div>
+                <div class="card-badge">React 19 · Node.js · MongoDB</div>
+                <h3>Helm</h3>
+                <p>Collaborative project management. Multi-workspace, role-based, Recharts dashboard.</p>
+                <div class="card-tags"><span>Project Mgmt</span><span>Redux</span><span>Tailwind</span></div>
+                <div class="card-arrow">→</div>
+            </a>
+
+            <!-- Fashivo -->
+            <a href="fashivo.html" class="card card--fashivo reveal">
+                <div class="card-glow"></div>
+                <div class="card-icon">👗</div>
+                <div class="card-badge">Vue 3 · Node.js · PostgreSQL</div>
+                <h3>Fashivo</h3>
+                <p>Full-stack fashion e-commerce with Swagger API docs and Pinia state.</p>
+                <div class="card-tags"><span>Fashion</span><span>Vue SPA</span><span>REST API</span></div>
+                <div class="card-arrow">→</div>
+            </a>
+
+            <!-- QuanLiSV -->
+            <a href="quanlisv.html" class="card card--quanlisv reveal">
+                <div class="card-glow"></div>
+                <div class="card-icon">🎓</div>
+                <div class="card-badge">ASP.NET · C# · SQL Server</div>
+                <h3>QuanLiSV</h3>
+                <p>Grade management for lecturers. Course dashboard, score entry, SQL MERGE upsert.</p>
+                <div class="card-tags"><span>Education</span><span>Web Forms</span><span>ADO.NET</span></div>
+                <div class="card-arrow">→</div>
+            </a>
+
+            <!-- Pixel Adventure -->
+            <a href="pixeladventure.html" class="card card--pixel reveal">
+                <div class="card-glow"></div>
+                <div class="card-icon">🎮</div>
+                <div class="card-badge">Flutter · Flame · PocketBase</div>
+                <h3>Pixel Adventure</h3>
+                <p>2D pixel platformer mobile game. 4 characters, enemies, achievements, leaderboard.</p>
+                <div class="card-tags"><span>Mobile Game</span><span>Flutter</span><span>Flame Engine</span></div>
+                <div class="card-arrow">→</div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-runner-wrap" id="footerRunnerWrap">
+            <canvas class="footer-runner" id="footerRunner" width="32" height="32"></canvas>
+        </div>
+        <p>Made with ☕ somewhere in Can Tho · 2025</p>
+        <div class="footer-links">
+            <a href="mailto:khangstone294@gmail.com">Gmail</a>
+            <a href="https://github.com/DrStone113" target="_blank">GitHub</a>
+            <a href="https://facebook.com/khang.thach.399" target="_blank">Facebook</a>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

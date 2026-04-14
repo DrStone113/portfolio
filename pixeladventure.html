@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixel Adventure – Demo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="pixeladventure.css" />
+</head>
+
+<body class="pixel-body">
+
+    <nav class="demo-nav">
+        <a href="index.html">← Back</a>
+        <span class="nav-title">🎮 Pixel Adventure</span>
+        <span style="color:#555577">Flutter · Flame Engine</span>
+    </nav>
+
+    <!-- HERO -->
+    <section class="demo-hero pixel-hero">
+        <canvas id="pixelBgCanvas"></canvas>
+        <div class="pixel-bg-layer"></div>
+        <div class="demo-hero-content reveal">
+            <h1>🎮 <span style="color:#c4b5fd">Pixel Adventure</span></h1>
+            <p>2D pixel platformer mobile game. Choose your character, collect fruits, dodge traps, defeat enemies —
+                chase the 3-star run. Built with Flutter & Flame Engine.</p>
+            <div class="tech-stack-list">
+                <span class="tech-tag" style="color:#02569B;border-color:rgba(2,86,155,0.3)">Flutter 3.9</span>
+                <span class="tech-tag" style="color:#ff6b35;border-color:rgba(255,107,53,0.3)">Flame 1.33</span>
+                <span class="tech-tag" style="color:#00b4d8;border-color:rgba(0,180,216,0.3)">PocketBase</span>
+                <span class="tech-tag">SQLite · GoRouter</span>
+            </div>
+        </div>
+        <!-- Sprite showcase -->
+        <div class="pixel-sprites-row reveal">
+            <canvas id="sprPinkMan" class="px-sprite" width="32" height="32" title="Pink Man"></canvas>
+            <canvas id="sprNinjaFrog" class="px-sprite" width="32" height="32" title="Ninja Frog"></canvas>
+            <canvas id="sprMaskDude" class="px-sprite" width="32" height="32" title="Mask Dude"></canvas>
+            <canvas id="sprVirtualGuy" class="px-sprite" width="32" height="32" title="Virtual Guy"></canvas>
+        </div>
+    </section>
+
+    <!-- GAME SCREEN MOCKUP -->
+    <div class="demo-section reveal">
+        <h2>Gameplay</h2>
+        <div class="screen-mockup">
+            <div class="screen-bar">
+                <div class="screen-dot red"></div>
+                <div class="screen-dot yellow"></div>
+                <div class="screen-dot green"></div>
+                <span style="margin-left:12px;font-size:12px;color:#666">Level 1 – In Game</span>
+            </div>
+            <div class="screen-body pixel-game-screen">
+                <!-- HUD -->
+                <div class="pixel-hud">
+                    <div class="hud-health">
+                        <span class="hud-heart">❤️</span><span class="hud-heart">❤️</span><span
+                            class="hud-heart">❤️</span>
+                    </div>
+                    <div class="hud-fruits">
+                        <canvas id="hudApple" class="hud-fruit-icon" width="32" height="32"></canvas>
+                        <span class="hud-count">3 / 12</span>
+                    </div>
+                    <div class="hud-score">Score: 300</div>
+                </div>
+                <!-- Game world -->
+                <div class="pixel-world">
+                    <canvas id="gameWorldBg"
+                        style="position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;z-index:0"></canvas>
+                    <div style="position:absolute;inset:0;z-index:1;pointer-events:none"></div>
+                    <!-- Platforms — rendered via canvas with correct terrain tiles -->
+                    <canvas id="platformGround"
+                        style="position:absolute;bottom:40px;left:0;right:0;width:100%;height:16px;image-rendering:pixelated;z-index:2"></canvas>
+                    <canvas id="platformMid1"
+                        style="position:absolute;bottom:100px;left:15%;width:120px;height:16px;image-rendering:pixelated;z-index:2"></canvas>
+                    <canvas id="platformMid2"
+                        style="position:absolute;bottom:160px;left:45%;width:100px;height:16px;image-rendering:pixelated;z-index:2"></canvas>
+                    <!-- Character -->
+                    <canvas id="gameChar" class="game-char" width="32" height="32"
+                        style="bottom:56px;left:20%;position:absolute;image-rendering:pixelated;width:48px;height:48px"></canvas>
+                    <!-- Fruits -->
+                    <canvas id="gameApple" class="game-fruit" width="32" height="32"
+                        style="bottom:120px;left:22%;position:absolute;image-rendering:pixelated;width:32px;height:32px;animation:fruitBob 1s ease-in-out infinite alternate"></canvas>
+                    <canvas id="gameCherry" class="game-fruit" width="32" height="32"
+                        style="bottom:180px;left:50%;position:absolute;image-rendering:pixelated;width:32px;height:32px;animation:fruitBob 1.2s ease-in-out infinite alternate"></canvas>
+                    <!-- Enemy -->
+                    <canvas id="gameChicken" class="game-enemy" width="32" height="34"
+                        style="bottom:56px;left:60%;position:absolute;image-rendering:pixelated;transform:scaleX(-1);width:48px;height:52px"></canvas>
+                </div>
+                <!-- Controls -->
+                <div class="pixel-controls">
+                    <div class="ctrl-joystick">🕹️</div>
+                    <div class="ctrl-btns">
+                        <div class="ctrl-btn">↑</div>
+                        <div class="ctrl-btn">↓</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHARACTERS -->
+    <div class="demo-section reveal">
+        <h2>Playable Characters</h2>
+        <div class="pixel-chars-grid">
+            <div class="char-card">
+                <canvas id="charPinkMan" class="char-sprite" width="32" height="32"></canvas>
+                <div class="char-name">Pink Man</div>
+            </div>
+            <div class="char-card">
+                <canvas id="charNinjaFrog" class="char-sprite" width="32" height="32"></canvas>
+                <div class="char-name">Ninja Frog</div>
+            </div>
+            <div class="char-card">
+                <canvas id="charMaskDude" class="char-sprite" width="32" height="32"></canvas>
+                <div class="char-name">Mask Dude</div>
+            </div>
+            <div class="char-card">
+                <canvas id="charVirtualGuy" class="char-sprite" width="32" height="32"></canvas>
+                <div class="char-name">Virtual Guy</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FRUITS SHOWCASE -->
+    <div class="demo-section reveal">
+        <h2>Collectibles</h2>
+        <div class="fruits-showcase">
+            <div class="fruit-item"><canvas id="showcaseApple" class="showcase-fruit" width="32"
+                    height="32"></canvas><span>Apple</span></div>
+            <div class="fruit-item"><canvas id="showcaseBananas" class="showcase-fruit" width="32"
+                    height="32"></canvas><span>Banana</span></div>
+            <div class="fruit-item"><canvas id="showcaseCherries" class="showcase-fruit" width="32"
+                    height="32"></canvas><span>Cherry</span></div>
+            <div class="fruit-item"><canvas id="showcaseKiwi" class="showcase-fruit" width="32"
+                    height="32"></canvas><span>Kiwi</span></div>
+            <div class="fruit-item"><canvas id="showcaseMelon" class="showcase-fruit" width="32"
+                    height="32"></canvas><span>Melon</span></div>
+            <div class="fruit-item"><canvas id="showcaseOrange" class="showcase-fruit" width="32"
+                    height="32"></canvas><span>Orange</span></div>
+            <div class="fruit-item"><canvas id="showcasePineapple" class="showcase-fruit" width="32"
+                    height="32"></canvas><span>Pineapple</span></div>
+            <div class="fruit-item"><canvas id="showcaseStrawberry" class="showcase-fruit" width="32"
+                    height="32"></canvas><span>Strawberry</span></div>
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="demo-section reveal">
+        <h2>Features</h2>
+        <div class="feature-grid">
+            <div class="feature-item" style="border-color:rgba(196,181,253,0.2)">
+                <div class="fi-icon">🎮</div>
+                <h4>4 Characters</h4>
+                <p>Pink Man, Ninja Frog, Mask Dude, Virtual Guy — each with full sprite animations.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(196,181,253,0.2)">
+                <div class="fi-icon">⭐</div>
+                <h4>Star Rating</h4>
+                <p>1–3 stars per level based on fruits collected and damage taken.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(196,181,253,0.2)">
+                <div class="fi-icon">🏆</div>
+                <h4>Achievements</h4>
+                <p>First Steps, Fruit Collector, Speed Runner — unlock as you play.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(196,181,253,0.2)">
+                <div class="fi-icon">🌐</div>
+                <h4>Leaderboard</h4>
+                <p>Local SQLite + remote PocketBase score sync.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(196,181,253,0.2)">
+                <div class="fi-icon">🎵</div>
+                <h4>Audio</h4>
+                <p>Background music and SFX with independent volume controls.</p>
+            </div>
+            <div class="feature-item" style="border-color:rgba(196,181,253,0.2)">
+                <div class="fi-icon">📱</div>
+                <h4>Mobile Controls</h4>
+                <p>Joystick + jump/drop buttons. Keyboard support for desktop.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>Made with ☕ somewhere in Can Tho · 2025</p>
+    </footer>
+    <script src="main.js"></script>
+    <script src="platformer.js"></script>
+</body>
+
+</html>
