@@ -241,12 +241,12 @@ if (gameWorldBg) {
     if (gwOffset >= GW_TILE) gwOffset -= GW_TILE;
     const w = gameWorldBg.width, h = gameWorldBg.height;
     gwCtx.clearRect(0, 0, w, h);
-    const cols = Math.ceil(w / GW_TILE) + 1;
+    const cols = Math.ceil(w / GW_TILE) + 2;
     const rows = Math.ceil(h / GW_TILE) + 2;
     for (let r = -1; r < rows; r++)
-      for (let c = 0; c < cols; c++)
+      for (let c = -1; c < cols; c++)
         gwCtx.drawImage(gwImg, 0, 0, gwImg.width, gwImg.height,
-          c * GW_TILE, r * GW_TILE + gwOffset, GW_TILE, GW_TILE);
+          Math.floor(c * GW_TILE), Math.floor(r * GW_TILE + gwOffset), GW_TILE + 1, GW_TILE + 1);
     requestAnimationFrame(drawGw);
   }
   requestAnimationFrame(drawGw);
@@ -287,13 +287,13 @@ if (pixelBgCanvas) {
     const h = pixelBgCanvas.height;
     bgCtx.clearRect(0, 0, w, h);
 
-    const cols = Math.ceil(w / TILE) + 1;
+    const cols = Math.ceil(w / TILE) + 2;
     const rows = Math.ceil(h / TILE) + 2;
 
     for (let row = -1; row < rows; row++) {
-      for (let col = 0; col < cols; col++) {
+      for (let col = -1; col < cols; col++) {
         bgCtx.drawImage(bgImg, 0, 0, bgImg.width, bgImg.height,
-          col * TILE, row * TILE + bgOffset, TILE, TILE);
+          Math.floor(col * TILE), Math.floor(row * TILE + bgOffset), TILE + 1, TILE + 1);
       }
     }
     requestAnimationFrame(drawBg);
