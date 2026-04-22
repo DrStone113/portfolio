@@ -1,7 +1,7 @@
 .pixel-body { background: #0a0814; }
 
 .pixel-hero {
-  background: #1a2e1a; /* fallback trước khi canvas load */
+  background: #1a1a3e; /* fallback trước khi canvas load */
   flex-direction: column; gap: 40px;
 }
 .pixel-bg-layer {
@@ -106,4 +106,82 @@
 
 @media (max-width: 640px) {
   .pixel-chars-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── LIQUID GLASS BUTTON ─────────────────────────────────────── */
+.btn-liquid-glass {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 32px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  color: #1a1a2e;
+  cursor: pointer;
+
+  /* match the blue tile color at low opacity — blends naturally */
+  background: rgba(180, 195, 220, 0.28);
+
+  /* glass border: bright top, subtle bottom */
+  border: 1px solid transparent;
+  box-shadow:
+    0 0 0 1.5px rgba(255,255,255,0.6),          /* outer rim */
+    0 2px 0 rgba(255,255,255,0.85) inset,        /* top inner shine */
+    0 -1px 0 rgba(100,120,160,0.25) inset,       /* bottom inner shadow */
+    0 6px 20px rgba(100,120,180,0.2);            /* soft drop shadow */
+
+  transition: background .25s, box-shadow .25s, transform .2s;
+  isolation: isolate;
+}
+
+/* top specular streak */
+.btn-liquid-glass::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 12%; right: 12%;
+  height: 40%;
+  border-radius: 0 0 50% 50%;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.5) 0%,
+    rgba(255,255,255,0.0) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* bottom refraction */
+.btn-liquid-glass::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 20%; right: 20%;
+  height: 30%;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(0deg,
+    rgba(255,255,255,0.25) 0%,
+    rgba(255,255,255,0.0) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.btn-liquid-glass svg,
+.btn-liquid-glass span {
+  position: relative;
+  z-index: 2;
+}
+
+.btn-liquid-glass:hover {
+  background: rgba(200, 215, 235, 0.38);
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1.5px rgba(255,255,255,0.8),
+    0 2px 0 rgba(255,255,255,0.95) inset,
+    0 -1px 0 rgba(100,120,160,0.2) inset,
+    0 10px 28px rgba(100,120,180,0.28);
+}
+
+.btn-liquid-glass:active {
+  transform: translateY(0);
+  background: rgba(170, 188, 210, 0.22);
 }

@@ -261,7 +261,7 @@ if (pixelBgCanvas) {
   let bgOffset = 0;
   let bgImg = null;
 
-  loadImage(BASE + 'Background/Gray.png').then(img => { bgImg = img; });
+  loadImage(BASE + 'Background/Blue.png').then(img => { bgImg = img; });
 
   function resizeBgCanvas() {
     const hero = pixelBgCanvas.parentElement;

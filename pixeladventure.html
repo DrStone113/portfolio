@@ -13,10 +13,44 @@
 
 <body class="pixel-body">
 
+    <!-- SVG filter for liquid glass distortion -->
+    <svg style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <filter id="liquid-glass-filter" x="-20%" y="-20%" width="140%" height="140%"
+                color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency="0.65 0.65" numOctaves="3" seed="2" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"
+                    result="displaced" />
+                <feGaussianBlur in="displaced" stdDeviation="0.4" result="blurred" />
+                <feComposite in="blurred" in2="SourceGraphic" operator="atop" />
+            </filter>
+            <filter id="liquid-glass-filter-hover" x="-20%" y="-20%" width="140%" height="140%"
+                color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency="0.55 0.55" numOctaves="3" seed="5" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G"
+                    result="displaced" />
+                <feGaussianBlur in="displaced" stdDeviation="0.6" result="blurred" />
+                <feComposite in="blurred" in2="SourceGraphic" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
+
     <nav class="demo-nav">
         <a href="index.html">← Back</a>
         <span class="nav-title">🎮 Pixel Adventure</span>
-        <a href="https://drstone113.github.io/PixelAdventure/" target="_blank" style="background:#c4b5fd;color:#1a1a2e;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700;text-decoration:none;">▶ Play Web Demo</a>
+        <div style="display:flex;align-items:center;gap:10px">
+            <a href="https://drstone113.github.io/PixelAdventure/" target="_blank"
+                style="background:#c4b5fd;color:#1a1a2e;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700;text-decoration:none;">▶
+                Play Web Demo</a>
+            <a href="https://github.com/DrStone113/PixelAdventure" target="_blank"
+                style="color:#c4b5fd;font-size:13px;display:flex;align-items:center;gap:5px">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z" />
+                </svg>
+                GitHub
+            </a>
+        </div>
     </nav>
 
     <!-- HERO -->
@@ -33,14 +67,17 @@
                 <span class="tech-tag" style="color:#00b4d8;border-color:rgba(0,180,216,0.3)">PocketBase</span>
                 <span class="tech-tag">SQLite · GoRouter</span>
             </div>
-            <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
+            <div style="margin-top:24px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
                 <a href="https://drstone113.github.io/PixelAdventure/" target="_blank"
-                   style="display:inline-block;background:linear-gradient(135deg,#c4b5fd,#a78bfa);color:#1a1a2e;padding:12px 28px;border-radius:50px;font-size:15px;font-weight:700;text-decoration:none;box-shadow:0 6px 20px rgba(196,181,253,0.4);">
+                    style="display:inline-flex;align-items:center;background:linear-gradient(135deg,#c4b5fd,#a78bfa);color:#1a1a2e;padding:12px 32px;border-radius:30px;font-size:16px;font-weight:700;text-decoration:none;box-shadow:0 6px 20px rgba(196,181,253,0.4);">
                     ▶ Play Web Demo
                 </a>
-                <a href="https://github.com/DrStone113/PixelAdventure" target="_blank"
-                   style="display:inline-block;background:rgba(255,255,255,0.1);color:#fff;padding:12px 28px;border-radius:50px;font-size:15px;font-weight:700;text-decoration:none;border:2px solid rgba(255,255,255,0.3);">
-                    GitHub →
+                <a href="https://github.com/DrStone113/PixelAdventure" target="_blank" class="btn-liquid-glass"> <svg
+                        width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z" />
+                    </svg>
+                    View on GitHub
                 </a>
             </div>
         </div>
@@ -200,6 +237,23 @@
     </footer>
     <script src="main.js"></script>
     <script src="platformer.js"></script>
+    <script>
+        // Animate liquid glass — morph border-radius for liquid feel
+        // (SVG filter on backdrop-filter element causes opacity accumulation bug)
+        const liquidBtn = document.querySelector('.btn-liquid-glass');
+        if (liquidBtn) {
+            let t = 0;
+            (function animateLiquid() {
+                t += 0.018;
+                const r1 = (28 + Math.sin(t) * 4).toFixed(1);
+                const r2 = (32 + Math.cos(t * 0.8) * 3).toFixed(1);
+                const r3 = (30 + Math.sin(t * 1.3) * 4).toFixed(1);
+                const r4 = (28 + Math.cos(t * 0.6) * 3).toFixed(1);
+                liquidBtn.style.borderRadius = `${r1}px ${r2}px ${r3}px ${r4}px`;
+                requestAnimationFrame(animateLiquid);
+            })();
+        }
+    </script>
 </body>
 
 </html>
