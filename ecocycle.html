@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoCycle – Fleet Monitoring &amp; Dispatch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="ecocycle.css" />
+</head>
+<body class="ecocycle-body">
+  <nav class="demo-nav">
+    <a href="index.html">← Back to portfolio</a>
+    <span class="nav-title">🚛 EcoCycle</span>
+    <a class="eco-nav-demo" href="ecocycle-live.html">Try live demo ↗</a>
+  </nav>
+
+  <section class="demo-hero eco-hero">
+    <div class="eco-orbit eco-orbit--one"></div>
+    <div class="eco-orbit eco-orbit--two"></div>
+    <div class="demo-hero-content reveal">
+      <div class="eco-kicker"><span></span> May – Jul 2026</div>
+      <h1>Fleet visibility,<br /><span>made actionable.</span></h1>
+      <p>EcoCycle is a GIS system for monitoring and dispatching waste-collection vehicles. It combines real-time telemetry, route history and operational reporting in one dispatcher workspace.</p>
+      <div class="tech-stack-list">
+        <span class="tech-tag eco-tag">React</span><span class="tech-tag eco-tag">NestJS</span><span class="tech-tag eco-tag">TypeScript</span><span class="tech-tag eco-tag">PostgreSQL / TimescaleDB</span><span class="tech-tag eco-tag">Redis</span><span class="tech-tag eco-tag">Socket.IO</span><span class="tech-tag eco-tag">OpenLayers</span><span class="tech-tag eco-tag">Docker</span>
+      </div>
+      <div class="eco-hero-actions">
+        <a href="ecocycle-live.html" class="eco-primary">▶ Open interactive demo</a>
+        <a href="#architecture" class="eco-secondary">Explore the system ↓</a>
+      </div>
+      <p class="eco-note">The interactive demo uses simulated telemetry and runs entirely in the browser.</p>
+    </div>
+    <div class="eco-hero-map" aria-hidden="true">
+      <span class="eco-map-line eco-map-line--a"></span><span class="eco-map-line eco-map-line--b"></span><span class="eco-map-line eco-map-line--c"></span>
+      <div class="eco-map-dot eco-map-dot--a">🚛</div><div class="eco-map-dot eco-map-dot--b">🚚</div><div class="eco-map-dot eco-map-dot--c">♻</div>
+    </div>
+  </section>
+
+  <main>
+    <section class="eco-section reveal" id="architecture">
+      <div class="eco-section-heading"><p>Architecture</p><h2>One shared fleet domain,<br />three focused layers.</h2></div>
+      <div class="eco-architecture">
+        <article><span class="eco-layer-num">01</span><h3>Dispatcher UI</h3><p>React + Vite and OpenLayers provide a web workspace for fleet status, map context, route history and reports.</p><div>React · OpenLayers · Socket.IO client</div></article>
+        <article><span class="eco-layer-num">02</span><h3>Operational API</h3><p>NestJS separates auth, fleet, telemetry, routing and reporting into maintainable modules with shared DTOs.</p><div>NestJS · TypeScript · JWT · Argon2</div></article>
+        <article><span class="eco-layer-num">03</span><h3>Data &amp; Routing</h3><p>Timeseries telemetry, caching and road-aware matching support high-frequency vehicle updates and route analysis.</p><div>PostgreSQL · TimescaleDB · Redis · GraphHopper</div></article>
+      </div>
+    </section>
+
+    <section class="eco-section eco-preview reveal">
+      <div class="eco-section-heading"><p>Interactive preview</p><h2>A dispatcher view built for<br />fast decisions.</h2></div>
+      <div class="eco-preview-shell">
+        <div class="eco-preview-top"><span class="eco-logo">ECOCYCLE</span><span class="eco-live"><i></i> LIVE TELEMETRY</span><span>Dispatcher / Can Tho</span></div>
+        <div class="eco-preview-content">
+          <aside><strong>Fleet overview</strong><span class="eco-preview-row active">CT-09 <em>Collecting</em></span><span class="eco-preview-row">CT-14 <em>On route</em></span><span class="eco-preview-row">CT-21 <em>Idle</em></span><span class="eco-preview-row">CT-25 <em>Offline</em></span></aside>
+          <div class="eco-preview-map"><span class="road r1"></span><span class="road r2"></span><span class="road r3"></span><span class="route"></span><b class="truck t1">🚛</b><b class="truck t2">🚚</b><b class="truck t3">🚛</b><span class="eco-map-label">Ninh Kiều</span></div>
+          <aside class="eco-preview-details"><strong>CT-09</strong><span>Route: NK-03</span><span>Speed: 24 km/h</span><span>Last update: now</span><button onclick="location.href='ecocycle-live.html'">Open live demo</button></aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="eco-section eco-results reveal">
+      <div class="eco-section-heading"><p>What it covers</p><h2>From a vehicle ping<br />to an operational decision.</h2></div>
+      <div class="eco-results-grid">
+        <article><span>01</span><h3>Fleet operations</h3><p>Track vehicle availability, current work and dispatch status in a single role-aware workspace.</p></article>
+        <article><span>02</span><h3>Telemetry &amp; history</h3><p>Stream GPS events, keep a time-series history and inspect a road-matched route after a shift.</p></article>
+        <article><span>03</span><h3>Reporting</h3><p>Surface fleet data for dispatchers and export operational reports when a shift needs review.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><p>EcoCycle · Fleet Monitoring &amp; Dispatch System · 2026</p></footer>
+  <script src="main.js"></script>
+</body>
+</html>
