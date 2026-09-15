@@ -21,13 +21,14 @@
     cherries: 'Items/Fruits/Cherries.png'
   };
   const images = {};
+  const usePersistentGuide = document.documentElement.classList.contains('persistent-guide-active');
   let progress = 0;
   let width = 1;
   let height = 1;
   let raf = 0;
 
   const phases = [
-    { label: 'STARTING LINE', description: 'Scroll down to move through a playable slice of Pixel Adventure. The character, world and checkpoints react directly to your scroll position.', caption: 'Pink Man is waiting at the starting platform.' },
+    { label: 'STARTING LINE', description: 'Scroll down to move through a playable slice of Pixel Adventure. The character, world and checkpoints react directly to your scroll position.', caption: 'Khang is waiting at the starting platform.' },
     { label: 'COLLECTING', description: 'The world shifts with every pixel of your scroll. Collectibles and terrain form a small, interactive story instead of a static project card.', caption: 'Checkpoint reached — keep scrolling to collect the next fruit.' },
     { label: 'SHIPPING', description: 'The final stretch represents the shipped game: playable characters, enemies, achievements and a connected leaderboard built with Flutter and Flame.', caption: 'Level complete. Pixel Adventure is ready to play.' }
   ];
@@ -123,23 +124,25 @@
     drawFruit(images.cherries, width * .87 + scrollX, height * .37, (fruitFrame + 6) % 17, scale * .7);
     drawFruit(images.apple, width * .93 + scrollX, groundY - 72, (fruitFrame + 10) % 17, scale * .62);
 
-    const runner = images.runner;
-    const startX = Math.max(width * .50, width - 530);
-    const characterX = startX + (width - startX - 98) * progress;
-    const jump = Math.sin(clamp((progress - .24) / .48) * Math.PI) * height * .19;
-    const characterY = groundY - 100 - jump;
-    ctx.fillStyle = 'rgba(15,45,45,.26)';
-    ctx.beginPath(); ctx.ellipse(characterX + 46, groundY + 9, 37, 8, 0, 0, Math.PI * 2); ctx.fill();
-    if (runner) {
-      const frame = Math.floor(progress * 144) % 12;
-      drawImageTile(runner, frame * 32, 0, 32, 32, characterX, characterY, 96, 96);
-    } else {
-      ctx.fillStyle = '#f29cb5'; ctx.fillRect(characterX + 24, characterY + 21, 45, 58);
-      ctx.fillStyle = '#fff1f0'; ctx.fillRect(characterX + 32, characterY + 8, 28, 24);
+    if (!usePersistentGuide) {
+      const runner = images.runner;
+      const startX = Math.max(width * .50, width - 530);
+      const characterX = startX + (width - startX - 98) * progress;
+      const jump = Math.sin(clamp((progress - .24) / .48) * Math.PI) * height * .19;
+      const characterY = groundY - 100 - jump;
+      ctx.fillStyle = 'rgba(15,45,45,.26)';
+      ctx.beginPath(); ctx.ellipse(characterX + 46, groundY + 9, 37, 8, 0, 0, Math.PI * 2); ctx.fill();
+      if (runner) {
+        const frame = Math.floor(progress * 144) % 12;
+        drawImageTile(runner, frame * 32, 0, 32, 32, characterX, characterY, 96, 96);
+      } else {
+        ctx.fillStyle = '#f29cb5'; ctx.fillRect(characterX + 24, characterY + 21, 45, 58);
+        ctx.fillStyle = '#fff1f0'; ctx.fillRect(characterX + 32, characterY + 8, 28, 24);
+      }
+      ctx.fillStyle = 'rgba(255,255,255,.9)';
+      ctx.font = '10px "DM Mono", monospace';
+      ctx.fillText('PINK MAN', characterX + 5, characterY - 11);
     }
-    ctx.fillStyle = 'rgba(255,255,255,.9)';
-    ctx.font = '10px "DM Mono", monospace';
-    ctx.fillText('PINK MAN', characterX + 5, characterY - 11);
   }
   function render() {
     ctx.clearRect(0, 0, width, height);
@@ -158,6 +161,9 @@
     description.textContent = data.description;
     caption.textContent = data.caption;
     steps.forEach((step, index) => step.classList.toggle('is-active', index === stage));
+    if (typeof window.CustomEvent === 'function') {
+      window.dispatchEvent(new window.CustomEvent('portfolio:storyprogress', { detail: { progress, stage } }));
+    }
     render();
   }
   function requestUpdate() {
