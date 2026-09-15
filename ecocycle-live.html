@@ -68,11 +68,13 @@
       {id:'v3',plate:'65A-015.43',route:'Tự do',speed:0,load:31,color:'#3366cc',lat:10.035,lng:105.738,status:'idle'},
       {id:'v4',plate:'65A-019.24',route:'Tuyến CR-01',speed:18,load:92,color:'#d9534f',lat:10.027,lng:105.766,status:'route',roadRoute:'cr01',routeIndex:18}
     ];
-    let selected = vehicles[0], markers = {}, routes = [], map, tiles;
+    let selected = vehicles[0], markers = {}, routes = [], map, tiles, labelsLayer;
     const roadRoutes = {};
     let activeTab = 'live';
     const street = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    const light = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+    const satellite = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+    const hybridLabels = 'https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}';
+    const mapStyles = { streets: street, satellite, hybrid: satellite, traffic: street };
 
     function icon(v) {
       return L.divIcon({className:'',html:`<div class="truck-icon" style="--truck:${v.color}">🚚</div><span class="truck-label" style="--truck:${v.color}">${v.plate}</span>`,iconSize:[52,66],iconAnchor:[26,28]});
@@ -170,7 +172,7 @@
     }
     function setup() {
       map = L.map('map',{zoomControl:false,attributionControl:true}).setView([10.0452,105.7469],13);
-      tiles = L.tileLayer(street,{maxZoom:19,attribution:'© OpenStreetMap contributors'}).addTo(map);
+      tiles = L.tileLayer(street,{maxZoom:19,attribution:'© OpenStreetMap contributors · Tiles © Esri'}).addTo(map);
       L.control.zoom({position:'bottomleft'}).addTo(map);
       drawRoutes(); renderMarkers(); renderList(); loadRoadGeometry();
       setInterval(() => {
@@ -185,6 +187,11 @@
         renderMarkers(); renderList();
       },3000);
     }
+    function applyMapStyle(style) {
+      tiles.setUrl(mapStyles[style] || street);
+      if (labelsLayer) { map.removeLayer(labelsLayer); labelsLayer = undefined; }
+      if (style === 'hybrid') labelsLayer = L.tileLayer(hybridLabels,{maxZoom:19,attribution:'© Esri'}).addTo(map);
+    }
     document.getElementById('search').oninput = renderList;
     document.getElementById('liveVehicles').onchange = renderMarkers;
     document.getElementById('allRoutes').onchange = drawRoutes;
@@ -196,7 +203,7 @@
     document.getElementById('layersToggle').onclick = () => { const element=document.getElementById('layerItems'); element.hidden=!element.hidden; };
     document.getElementById('panelToggle').onclick = () => { const element=document.getElementById('trackingPanel'); element.hidden=!element.hidden; };
     document.querySelectorAll('.tab').forEach(tab => tab.onclick = () => { document.querySelectorAll('.tab').forEach(element=>element.classList.remove('active')); tab.classList.add('active'); document.getElementById('panelHeading').textContent=tab.dataset.tab==='live'?'🛰️ Giám sát trực tuyến':tab.dataset.tab==='history'?'⏱️ Lịch sử lộ trình':tab.dataset.tab==='reports'?'📊 Báo cáo & Phân tích':'🏢 Quản lý điểm tập kết'; });
-    document.querySelectorAll('.style-btn').forEach(button => button.onclick = () => { document.querySelectorAll('.style-btn').forEach(element=>element.classList.remove('active')); button.classList.add('active'); tiles.setUrl(button.dataset.style==='streets'?street:light); });
+    document.querySelectorAll('.style-btn').forEach(button => button.onclick = () => { document.querySelectorAll('.style-btn').forEach(element=>element.classList.remove('active')); button.classList.add('active'); applyMapStyle(button.dataset.style); });
     setup();
 
     let historyRouteLayer, historyMarker, historyTimer, heatLayer;
