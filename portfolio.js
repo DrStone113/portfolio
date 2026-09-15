@@ -59,22 +59,23 @@
     if (!image) return;
     ctx.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, targetX, targetY, targetWidth, targetHeight);
   }
-  function drawTerrainTile(id, x, y, scale) {
+  function drawTerrainTile(id, x, y, scale, sourceHeight = 16) {
     const terrain = images.terrain;
     if (!terrain) {
       ctx.fillStyle = id < 20 ? '#5b9159' : '#7fc878';
-      ctx.fillRect(x, y, 16 * scale, 16 * scale);
+      ctx.fillRect(x, y, 16 * scale, sourceHeight * scale);
       return;
     }
     const index = id - 1;
-    drawImageTile(terrain, (index % 22) * 16, Math.floor(index / 22) * 16, 16, 16, x, y, 16 * scale, 16 * scale);
+    drawImageTile(terrain, (index % 22) * 16, Math.floor(index / 22) * 16, 16, sourceHeight, x, y, 16 * scale, sourceHeight * scale);
   }
   function drawPlatform(startX, y, columns, scale, top = false) {
+    const sourceHeight = top ? 5 : 16;
     for (let index = 0; index < columns; index += 1) {
       const first = index === 0;
       const last = index === columns - 1;
       const tile = top ? (first ? 40 : last ? 42 : 41) : (first ? 7 : last ? 9 : 8);
-      drawTerrainTile(tile, startX + index * 16 * scale, y, scale);
+      drawTerrainTile(tile, startX + index * 16 * scale, y, scale, sourceHeight);
     }
   }
   function drawBackground() {
