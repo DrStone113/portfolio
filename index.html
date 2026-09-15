@@ -1,149 +1,74 @@
 <!DOCTYPE html>
-<html lang="vi">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Thach Nguyen Khang | Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=K2D:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Thach Nguyen Khang, a final-year IT student building full-stack, real-time and mobile products." />
+  <title>Thach Nguyen Khang — Software Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="portfolio.css" />
 </head>
-
 <body>
+  <div class="page-noise" aria-hidden="true"></div>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-bg-grid"></div>
-        <div class="floating-fruits" id="floatingFruits"></div>
-        <div class="hero-content">
-            <canvas class="hero-sprite" id="heroSprite" width="32" height="32"></canvas>
-            <h1 class="hero-title">Hey, I'm <span class="accent">Khang</span> 👋</h1>
-            <p class="hero-sub">Final-year IT student at Can Tho University · I build web, real-time and mobile systems.</p>
-            <div class="tech-pills">
-                <span>ASP.NET</span><span>C#</span><span>React</span><span>TypeScript</span>
-                <span>NestJS</span><span>Node.js</span><span>Flutter</span><span>PostgreSQL</span>
-            </div>
-            <a href="#projects" class="hero-cta">See my work ↓</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Back to top"><span>TK</span><i></i>portfolio</a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="#work">Selected work</a><a href="#focus">Focus</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="header-link" href="https://github.com/DrStone113" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
+  </header>
+
+  <main id="top">
+    <section class="hero-section">
+      <div class="hero-orb hero-orb--one" aria-hidden="true"></div><div class="hero-orb hero-orb--two" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> THACH NGUYEN KHANG · SOFTWARE ENGINEER</p>
+        <h1>Building products that feel <em>clear, fast</em> and real.</h1>
+        <p class="hero-intro">Final-year IT student at Can Tho University. I turn product ideas into dependable web, real-time and mobile experiences with thoughtful interfaces and maintainable systems behind them.</p>
+        <div class="hero-actions"><a class="button button--primary" href="#work">Explore selected work <b>↓</b></a><a class="button button--ghost" href="mailto:khangstone294@gmail.com">Let’s talk <b>↗</b></a></div>
+        <dl class="hero-facts"><div><dt>3.57 / 4.0</dt><dd>GPA</dd></div><div><dt>8+</dt><dd>projects built</dd></div><div><dt>Can Tho</dt><dd>Vietnam</dd></div></dl>
+      </div>
+
+      <aside class="hero-console" aria-label="Current capabilities">
+        <div class="console-bar"><span></span><span></span><span></span><p>khang@portfolio:~</p></div>
+        <div class="console-body">
+          <p class="console-prompt">$ currently building</p>
+          <div class="console-project"><div class="project-mark">EC</div><div><small>FEATURED CASE STUDY</small><strong>EcoCycle</strong><span>Real-time fleet monitoring</span></div><i class="live-dot">live</i></div>
+          <div class="console-map" aria-hidden="true"><span class="route route--a"></span><span class="route route--b"></span><span class="route route--c"></span><span class="map-node map-node--a">●</span><span class="map-node map-node--b">●</span><span class="map-node map-node--c">●</span><span class="map-label">LIVE ROUTING</span></div>
+          <div class="console-stack"><span>React</span><span>NestJS</span><span>TypeScript</span><span>PostgreSQL</span><span>Socket.IO</span></div>
+          <a class="console-link" href="ecocycle.html">View case study <b>→</b></a>
         </div>
-        <div class="hero-ground">
-            <div class="ground-runner-wrap" id="groundRunnerWrap">
-                <canvas class="ground-runner" id="groundRunner" width="32" height="32"></canvas>
-            </div>
-        </div>
+      </aside>
     </section>
 
-    <!-- PROJECTS GRID -->
-    <section class="projects" id="projects">
-        <h2 class="section-title">What I've shipped</h2>
-        <p class="section-sub">Not side projects. Real deployments.</p>
-        <div class="cards-grid">
+    <section class="work-section" id="work">
+      <div class="section-heading"><div><p class="section-kicker">01 / SELECTED WORK</p><h2>Projects with an<br />actual point of view.</h2></div><p>From operational dashboards to consumer products, each project solves a concrete workflow—not just a screen.</p></div>
 
-            <!-- EcoCycle -->
-            <a href="ecocycle.html" class="card card--ecocycle reveal">
-                <div class="card-glow"></div>
-                <div class="card-icon">🚛</div>
-                <div class="card-badge">React · NestJS · TypeScript</div>
-                <h3>EcoCycle</h3>
-                <p>Real-time GIS monitoring and dispatch for waste-collection vehicles.</p>
-                <div class="card-tags"><span>Fleet Monitoring</span><span>WebSocket</span><span>OpenLayers</span></div>
-                <div class="card-arrow">→</div>
-            </a>
+      <article class="featured-work">
+        <div class="featured-copy"><p class="card-number">01 — 2026</p><div class="work-title"><span class="work-icon">🚛</span><h3>EcoCycle</h3></div><p class="featured-description">A GIS dispatcher workspace for monitoring waste-collection vehicles, snapping routes to roads, reviewing history and managing operational alerts in real time.</p><ul class="outcome-list"><li><span>01</span> Live fleet telemetry and route status</li><li><span>02</span> Route replay, reports and depot workflows</li><li><span>03</span> Browser-based interactive dispatcher demo</li></ul><div class="tech-list"><span>React</span><span>NestJS</span><span>OpenLayers</span><span>Socket.IO</span><span>PostgreSQL</span></div><div class="work-actions"><a class="text-link" href="ecocycle.html">Read case study <b>→</b></a><a class="text-link text-link--muted" href="ecocycle-live.html">Open live demo <b>↗</b></a></div></div>
+        <div class="featured-visual" aria-hidden="true"><div class="visual-topbar"><span></span><span></span><span></span><i>LIVE DISPATCHER</i></div><div class="visual-map"><div class="map-grid"></div><span class="visual-route visual-route--one"></span><span class="visual-route visual-route--two"></span><span class="visual-route visual-route--three"></span><span class="vehicle vehicle--one">🚚</span><span class="vehicle vehicle--two">🚛</span><span class="vehicle vehicle--three">🚚</span><div class="map-pulse"></div></div><div class="visual-panel"><p>FLEET STATUS <b>03 / 04</b></p><div><span class="status-dot"></span>65A-002.18 <i>On route</i></div><div><span class="status-dot amber"></span>65A-008.91 <i>Alert</i></div><div><span class="status-dot"></span>65A-019.24 <i>On route</i></div></div></div>
+      </article>
 
-            <!-- Planex -->
-            <a href="planex.html" class="card card--planex reveal">
-                <div class="card-glow"></div>
-                <div class="card-icon">📅</div>
-                <div class="card-badge">PHP · MySQL · Firebase</div>
-                <h3>Planex</h3>
-                <p>Task manager with a brain. Smart free-slot finder + push notifications.</p>
-                <div class="card-tags"><span>Task Manager</span><span>Scheduler</span><span>FCM</span></div>
-                <div class="card-arrow">→</div>
-            </a>
+      <div class="project-grid">
+        <a class="project-card project-card--snack" href="snackshop.html"><div class="project-card-head"><span>02</span><i>ASP.NET · C#</i></div><div class="project-icon">🍿</div><h3>SnackShop</h3><p>E-commerce flows, carts, orders and an admin workspace for a C# web application.</p><div class="project-card-foot"><span>View project</span><b>↗</b></div></a>
+        <a class="project-card project-card--fashivo" href="fashivo.html"><div class="project-card-head"><span>03</span><i>Vue · Node.js</i></div><div class="project-icon">✦</div><h3>Fashivo</h3><p>A full-stack fashion store with a Vue storefront, REST API and PostgreSQL data layer.</p><div class="project-card-foot"><span>View project</span><b>↗</b></div></a>
+        <a class="project-card project-card--pixel" href="pixeladventure.html"><div class="project-card-head"><span>04</span><i>Flutter · Flame</i></div><div class="project-icon">⌁</div><h3>Pixel Adventure</h3><p>A mobile platformer with game mechanics, achievements and a connected leaderboard.</p><div class="project-card-foot"><span>View project</span><b>↗</b></div></a>
+      </div>
 
-            <!-- EbookStore -->
-            <a href="ebookstore.html" class="card card--ebook reveal">
-                <div class="card-glow"></div>
-                <div class="card-icon">📚</div>
-                <div class="card-badge">WordPress · WooCommerce · Dokan</div>
-                <h3>EbookStore</h3>
-                <p>Multi-vendor ebook marketplace with PayOS payment & PDF preview.</p>
-                <div class="card-tags"><span>Marketplace</span><span>Multi-vendor</span><span>PayOS</span></div>
-                <div class="card-arrow">→</div>
-            </a>
-            <a href="snackshop.html" class="card card--snack reveal">
-                <div class="card-glow"></div>
-                <div class="card-icon">🍿</div>
-                <div class="card-badge">ASP.NET · C# · SQL Server</div>
-                <h3>SnackShop</h3>
-                <p>Full e-commerce snack store. Cart, checkout, order history, admin panel.</p>
-                <div class="card-tags"><span>E-commerce</span><span>Admin Panel</span><span>Bootstrap 5</span></div>
-                <div class="card-arrow">→</div>
-            </a>
-
-            <!-- Helm -->
-            <a href="helm.html" class="card card--helm reveal">
-                <div class="card-glow"></div>
-                <div class="card-icon">🪖</div>
-                <div class="card-badge">React 19 · Node.js · MongoDB</div>
-                <h3>Helm</h3>
-                <p>Collaborative project management. Multi-workspace, role-based, Recharts dashboard.</p>
-                <div class="card-tags"><span>Project Mgmt</span><span>Redux</span><span>Tailwind</span></div>
-                <div class="card-arrow">→</div>
-            </a>
-
-            <!-- Fashivo -->
-            <a href="fashivo.html" class="card card--fashivo reveal">
-                <div class="card-glow"></div>
-                <div class="card-icon">👗</div>
-                <div class="card-badge">Vue 3 · Node.js · PostgreSQL</div>
-                <h3>Fashivo</h3>
-                <p>Full-stack fashion e-commerce with Swagger API docs and Pinia state.</p>
-                <div class="card-tags"><span>Fashion</span><span>Vue SPA</span><span>REST API</span></div>
-                <div class="card-arrow">→</div>
-            </a>
-
-            <!-- QuanLiSV -->
-            <a href="quanlisv.html" class="card card--quanlisv reveal">
-                <div class="card-glow"></div>
-                <div class="card-icon">🎓</div>
-                <div class="card-badge">ASP.NET · C# · SQL Server</div>
-                <h3>QuanLiSV</h3>
-                <p>Grade management for lecturers. Course dashboard, score entry, SQL MERGE upsert.</p>
-                <div class="card-tags"><span>Education</span><span>Web Forms</span><span>ADO.NET</span></div>
-                <div class="card-arrow">→</div>
-            </a>
-
-            <!-- Pixel Adventure -->
-            <a href="pixeladventure.html" class="card card--pixel reveal">
-                <div class="card-glow"></div>
-                <div class="card-icon">🎮</div>
-                <div class="card-badge">Flutter · Flame · PocketBase</div>
-                <h3>Pixel Adventure</h3>
-                <p>2D pixel platformer mobile game. 4 characters, enemies, achievements, leaderboard.</p>
-                <div class="card-tags"><span>Mobile Game</span><span>Flutter</span><span>Flame Engine</span></div>
-                <div class="card-arrow">→</div>
-            </a>
-
-        </div>
+      <div class="all-work"><p>More work</p><div><a href="planex.html">Planex <span>PHP · Firebase</span></a><a href="ebookstore.html">EbookStore <span>WordPress · PayOS</span></a><a href="helm.html">Helm <span>React · MongoDB</span></a><a href="quanlisv.html">QuanLiSV <span>ASP.NET · SQL Server</span></a></div></div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-runner-wrap" id="footerRunnerWrap">
-            <canvas class="footer-runner" id="footerRunner" width="32" height="32"></canvas>
-        </div>
-        <p>Made with ☕ somewhere in Can Tho · 2026</p>
-        <div class="footer-links">
-            <a href="mailto:khangstone294@gmail.com">Gmail</a>
-            <a href="https://github.com/DrStone113" target="_blank">GitHub</a>
-            <a href="https://facebook.com/khang.thach.399" target="_blank">Facebook</a>
-        </div>
-    </footer>
+    <section class="focus-section" id="focus">
+      <div class="section-heading section-heading--compact"><div><p class="section-kicker">02 / HOW I WORK</p><h2>Technology is useful<br />when it serves the task.</h2></div></div>
+      <div class="focus-grid"><article><span>01</span><h3>Real-time systems</h3><p>I enjoy the detail behind live interfaces: telemetry, state changes, map context, APIs and clear operational feedback.</p><div>WebSocket · NestJS · Maps</div></article><article><span>02</span><h3>Full-stack products</h3><p>I build complete, traceable flows—from UI interaction and authentication to data modelling and the admin experience.</p><div>React · Vue · ASP.NET · SQL</div></article><article><span>03</span><h3>Mobile experiences</h3><p>I bring the same product thinking to Flutter apps, from account onboarding to API-backed plans and game mechanics.</p><div>Flutter · Firebase · REST APIs</div></article></div>
+    </section>
 
-    <script src="main.js"></script>
+    <section class="contact-section" id="contact"><p class="section-kicker">03 / CONTACT</p><h2>Have a product<br /><em>worth building?</em></h2><p>I’m open to internships and opportunities where I can ship useful software with a thoughtful team.</p><div class="contact-actions"><a class="button button--primary" href="mailto:khangstone294@gmail.com">khangstone294@gmail.com <b>↗</b></a><a class="button button--ghost" href="https://github.com/DrStone113" target="_blank" rel="noreferrer">GitHub profile <b>↗</b></a></div></section>
+  </main>
+
+  <footer><a class="brand" href="#top"><span>TK</span><i></i>portfolio</a><p>© 2026 Thach Nguyen Khang · Can Tho, Vietnam</p><a href="#top">Back to top ↑</a></footer>
 </body>
-
 </html>
