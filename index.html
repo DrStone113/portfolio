@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="adventure.css" />
+  <link rel="stylesheet" href="portfolio-guide.css" />
 </head>
 <body>
   <div class="screen-grain" aria-hidden="true"></div>
@@ -18,21 +19,31 @@
     <a class="nav-github" href="https://github.com/DrStone113" target="_blank" rel="noreferrer">GitHub <i>↗</i></a>
   </header>
 
+  <div class="pixel-guide" id="portfolioCharacter" aria-hidden="true" hidden>
+    <div class="pixel-guide__body"><span class="pixel-guide__sprite"></span></div>
+    <span class="pixel-guide__dust"></span>
+  </div>
+  <aside class="pixel-dialogue" id="portfolioDialogue" role="status" aria-live="polite" aria-atomic="true" hidden>
+    <span data-dialogue-speaker>THACH</span>
+    <p data-dialogue-text></p>
+  </aside>
+
   <main id="top">
     <section class="launch-level" aria-labelledby="launch-title">
       <div class="launch-grid" aria-hidden="true"></div>
       <div class="launch-copy">
         <p class="pixel-kicker"><span></span> PLAYER ONE / AVAILABLE FOR NEW QUESTS</p>
         <h1 id="launch-title">Build.<br /><em>Explore.</em><br />Ship.</h1>
-        <p class="launch-intro">I’m Thach Nguyen Khang, a final-year IT student at Can Tho University. I build full-stack, real-time and mobile products that turn a complex workflow into a clear experience.</p>
-        <div class="launch-actions"><a href="#pixel-story" class="pixel-button pixel-button--lime">Start the adventure <b>↓</b></a><a href="mailto:khangstone294@gmail.com" class="pixel-button pixel-button--line">Send a message <b>↗</b></a></div>
+        <p class="launch-role">THACH NGUYEN KHANG <span>//</span> FULL-STACK · REAL-TIME · MOBILE</p>
+        <div class="launch-actions"><a href="#pixel-story" class="pixel-button pixel-button--lime" id="startAdventure">Start the adventure <b>↓</b></a><button class="pixel-button pixel-button--line" id="skipIntro" type="button">Skip intro / Show projects <b>↘</b></button></div>
         <div class="status-row"><span><i></i> Full-stack web</span><span><i></i> Real-time systems</span><span><i></i> Flutter mobile</span></div>
+        <button class="intro-replay" id="replayIntro" type="button" hidden>REPLAY INTRO ↺</button>
       </div>
       <div class="launch-world" aria-hidden="true">
         <div class="cloud cloud--one"></div><div class="cloud cloud--two"></div><div class="cloud cloud--three"></div>
         <span class="hero-fruit hero-fruit--a"></span><span class="hero-fruit hero-fruit--b"></span>
         <div class="hero-platform hero-platform--high"></div><div class="hero-platform hero-platform--mid"></div><div class="hero-platform hero-platform--floor"></div>
-        <div class="hero-sprite"><span>THACH</span></div>
+        <div class="character-anchor character-anchor--hero" id="heroCharacterAnchor"></div>
         <div class="hero-sign"><b>01</b><span>START<br />HERE</span></div>
       </div>
       <div class="launch-footer"><span>SCROLL TO ENTER</span><i></i><span>LEVEL 01</span></div>
@@ -87,6 +98,9 @@
   </main>
 
   <footer><a class="game-logo" href="#top"><span>TK</span><b>PORTFOLIO.EXE</b></a><p>© 2026 Thach Nguyen Khang · Can Tho, Vietnam</p><a href="#top">BACK TO START ↑</a></footer>
+  <script src="character-controller.js"></script>
+  <script src="dialogue-controller.js"></script>
+  <script src="portfolio-guide.js"></script>
   <script src="portfolio.js"></script>
 </body>
 </html>

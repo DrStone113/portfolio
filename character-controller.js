@@ -57,6 +57,7 @@
       this.element.dataset.state = normalized;
       this.sprite.style.setProperty('--sprite-image', `url("${this.assetRoot}${sprite.file}")`);
       this.sprite.style.setProperty('--sprite-frames', sprite.frames);
+      this.sprite.style.setProperty('--sprite-end', `${sprite.frames * -32}px`);
       this.sprite.style.setProperty('--sprite-duration', `${sprite.duration}ms`);
       if (normalized === 'look_left') this.face('left');
       if (normalized === 'look_right') this.face('right');
