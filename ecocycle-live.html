@@ -9,11 +9,39 @@
   <style>
     :root{--green:#1f7a3f;--green-50:#e9f5ee;--orange:#ff6600;--danger:#d9534f;--warn:#e0a800;--app:#eef1f4;--surface:#fff;--muted:#687284;--text:#1c2430;--border:#e2e6ea;--shadow:0 8px 32px rgba(16,24,40,.12)}*{box-sizing:border-box}html,body,#map{margin:0;width:100%;height:100%;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text)}body{background:var(--app);overflow:hidden}button,input{font:inherit}.map-fallback{position:absolute;inset:0;background:linear-gradient(132deg,#eef1e8,#f4f2ec 38%,#e5edf0);z-index:0}.leaflet-container{background:#eef1e8}.glass{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(255,255,255,.86);border:1px solid rgba(255,255,255,.55);box-shadow:0 8px 32px rgba(16,24,40,.09)}.header{position:fixed;z-index:1000;top:18px;left:50%;transform:translateX(-50%);min-width:380px;border-radius:14px;padding:10px 24px;display:flex;flex-direction:column;align-items:center;gap:8px}.brand{display:flex;align-items:center;gap:8px}.brand-mark{width:22px;height:22px;border-radius:50%;background:conic-gradient(from 35deg,#1f7a3f,#7abf4b,#1f7a3f);position:relative;animation:spin 20s linear infinite}.brand-mark:after{content:'♻';position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:13px}.brand b{font-size:15px}.brand small{color:var(--muted);font-size:13px;font-weight:500;margin-left:4px}.tabs{display:flex;gap:8px}.tab{border:0;background:transparent;color:var(--muted);font-size:13px;font-weight:600;padding:6px 14px;border-radius:8px;cursor:pointer;position:relative}.tab:hover{background:rgba(31,122,63,.08);color:var(--green)}.tab.active{color:var(--green)}.tab.active:after{content:'';position:absolute;left:14px;right:14px;bottom:-2px;height:3px;border-radius:9px;background:var(--green)}.right-panel{position:fixed;z-index:1000;top:16px;right:16px;width:400px;height:calc(100% - 32px);border-radius:14px;padding:16px 18px;overflow:auto}.profile{display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid rgba(0,0,0,.06)}.profile-left{display:flex;align-items:center;gap:10px}.avatar{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#edf2f7;border:1px solid var(--border);font-size:18px}.profile strong{display:block;font-size:12px}.profile small{color:var(--muted);font-size:10px}.logout{border:1px solid #cdd3da;background:#fff;border-radius:8px;padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer}.section-head{display:flex;justify-content:space-between;align-items:center;color:#1a202c;font-size:13px;font-weight:700;padding:4px 6px 9px;margin:0 -6px 8px;border-bottom:1px solid rgba(0,0,0,.05)}.collapse{border:0;background:none;color:var(--muted);font-size:18px;cursor:pointer}.layers{padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid rgba(0,0,0,.06)}.layer{display:flex;align-items:center;gap:8px;color:#4a5568;font-size:12px;font-weight:500;margin:9px 0;cursor:pointer}.layer input{accent-color:var(--green);width:16px;height:16px}.style-title{display:flex;justify-content:space-between;margin-top:12px;padding-top:12px;border-top:1px solid #e2e8f0;font-size:12px;font-weight:700}.styles{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}.style-btn{padding:7px;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--muted);font-size:11px;cursor:pointer}.style-btn.active{background:var(--green-50);border-color:rgba(31,122,63,.25);color:var(--green);font-weight:700}.panel-title{font-size:13px;font-weight:700;margin:0 0 10px}.fleet-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}.stat{border:1px solid var(--border);background:#fff;border-radius:8px;padding:8px 4px;display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center}.stat:nth-child(2){background:#e9f5ee;border-color:rgba(31,122,63,.2)}.stat:nth-child(3){background:#fffbeb;border-color:rgba(224,168,0,.2)}.stat:nth-child(4){background:#fdf2f2;border-color:rgba(217,83,79,.2)}.stat span{font-size:12px}.stat label{font-size:10.5px;color:var(--muted);font-weight:600}.stat b{font-size:18px}.stat:nth-child(2) b{color:var(--green)}.stat:nth-child(3) b{color:#b45309}.stat:nth-child(4) b{color:var(--danger)}.live-box{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 14px;box-shadow:0 1px 3px rgba(16,24,40,.05)}.live-box header{display:flex;position:static;transform:none;min-width:0;flex-direction:row;justify-content:space-between;padding:0;background:transparent;box-shadow:none;border:0;margin-bottom:10px}.live-box header span{font-size:12.5px;font-weight:700}.search{position:relative;margin-bottom:10px}.search span{position:absolute;left:10px;top:7px;color:#97a0ad;font-size:12px}.search input{width:100%;padding:7px 10px 7px 30px;border:1px solid #cdd3da;border-radius:6px;background:#fafbfc;font-size:12px;outline:none}.search input:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(31,122,63,.15)}.vehicle-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;max-height:258px;overflow:auto}.vehicle{border:1px solid var(--border);border-radius:8px;background:#f8fafc;padding:8px 10px;cursor:pointer;text-align:left;transition:.15s}.vehicle:hover,.vehicle.selected{background:#ecfdf5;border-color:var(--green);box-shadow:0 2px 8px rgba(31,122,63,.14)}.vehicle-top,.vehicle-meta{display:flex;justify-content:space-between;align-items:center;gap:4px}.vehicle-top{font-size:12px;font-weight:700}.dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:5px}.route-badge{font-size:9.5px;font-weight:600;border:1px solid rgba(31,122,63,.15);border-radius:12px;padding:2px 5px;background:var(--green-50);color:var(--green)}.route-badge.idle{background:#f1f5f9;border-color:transparent;color:#687284}.load{height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin:7px 0}.load i{display:block;height:100%;border-radius:inherit;background:var(--green)}.vehicle-meta{font-size:10px;color:var(--muted)}.moving{padding:1px 5px;border-radius:4px;background:#ecfdf5;color:#065f46;font-weight:600}.alerts{margin-top:14px}.alert-title{display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-bottom:8px}.alert-title button{background:none;border:0;color:var(--danger);font-size:11px;cursor:pointer}.alert{display:flex;gap:8px;padding:8px 10px;border-radius:6px;margin:6px 0;font-size:11.5px}.alert b{display:block;margin-bottom:2px}.alert.warning{background:#fffbeb;border:1px solid #fef3c7;color:#92400e}.alert.critical{background:#fdf2f2;border:1px solid #fbd5d5;color:#9b1c1c}.layers-card{position:fixed;z-index:999;bottom:24px;left:24px;width:236px;border-radius:14px;padding:14px 18px}.layers-card .layer:last-child{margin-bottom:0}.detail{position:fixed;z-index:999;bottom:24px;right:424px;width:320px;border-radius:16px;padding:16px}.detail.hidden{display:none}.detail-head{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:8px;border-bottom:1px solid var(--border);margin-bottom:8px}.gps{font-size:11px;color:var(--green);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.plate{font-size:16px;font-weight:800;margin-top:3px}.close-detail{border:0;background:none;color:#94a3b8;font-size:21px;cursor:pointer}.metrics{width:100%;border-collapse:collapse;font-size:12px}.metrics td{padding:6px 0;color:#64748b}.metrics td:last-child{text-align:right;color:#1c2430;font-weight:650}.message{width:100%;padding:10px 16px;border:0;border-radius:8px;background:var(--orange);color:#fff;font-weight:700;font-size:13px;cursor:pointer;box-shadow:0 4px 10px rgba(255,102,0,.25);margin-top:7px}.sim-note{position:fixed;z-index:999;bottom:12px;left:50%;transform:translateX(-50%);font-size:11px;color:#536274;background:rgba(255,255,255,.78);padding:6px 11px;border:1px solid rgba(226,230,234,.9);border-radius:999px}.truck-icon{width:48px;height:48px;border-radius:50%;background:#fff;border:3px solid var(--truck);box-shadow:0 3px 8px rgba(0,0,0,.32);display:grid;place-items:center;font-size:21px;position:relative}.truck-icon:before{content:'';position:absolute;top:-11px;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:9px solid #ef4444}.truck-label{margin-top:37px;display:inline-block;white-space:nowrap;padding:2px 6px;background:#0f172a;color:#fff;border:1px solid var(--truck);border-radius:4px;font:bold 11px Inter,sans-serif}@keyframes spin{to{transform:rotate(360deg)}}@media(max-width:980px){.right-panel{width:360px}.detail{right:384px}.header{left:18px;transform:none}.layers-card{display:none}}@media(max-width:720px){.header{top:10px;left:10px;right:10px;min-width:0;padding:8px 11px}.brand small{display:none}.tabs{gap:1px}.tab{font-size:11px;padding:5px 7px}.right-panel{top:auto;bottom:10px;left:10px;right:10px;width:auto;height:54%;padding:12px}.layers{display:none}.profile{padding-bottom:8px;margin-bottom:8px}.fleet-stats{margin-bottom:8px}.detail{display:none}.layers-card{display:none}.sim-note{display:none}.vehicle-list{max-height:150px}.leaflet-control-zoom{display:none}}
   </style>
+  <style>
+    .tab-panel{padding:2px 1px 4px}.tab-panel[hidden]{display:none}.tab-panel h3{font-size:14px;margin:2px 0 12px}.panel-copy{margin:-4px 0 12px;color:var(--muted);font-size:11px;line-height:1.45}.panel-field{display:grid;gap:5px;margin:10px 0;color:#475569;font-size:11px;font-weight:650}.panel-field input,.panel-field select{width:100%;border:1px solid #cdd3da;border-radius:7px;background:#fff;padding:8px;font-size:12px;color:var(--text)}.panel-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.panel-actions{display:flex;gap:7px;flex-wrap:wrap;margin:11px 0}.panel-button{border:1px solid #cbd5e1;background:#fff;color:#334155;border-radius:7px;padding:8px 10px;font-size:11px;font-weight:700;cursor:pointer}.panel-button.primary{background:var(--green);border-color:var(--green);color:#fff}.panel-button.warn{background:#fff7ed;border-color:#fed7aa;color:#c2410c}.panel-button:hover{filter:brightness(.97)}.history-summary,.report-status,.management-status{border:1px solid var(--border);background:#f8fafc;border-radius:8px;padding:9px 10px;color:#475569;font-size:11.5px;line-height:1.45}.history-timeline{border-left:2px solid #dbe5df;margin:12px 6px;padding-left:12px;display:grid;gap:10px}.history-event{position:relative;font-size:11.5px;color:#475569}.history-event:before{content:'';position:absolute;left:-17px;top:4px;width:8px;height:8px;background:var(--green);border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #b7c7bd}.history-event time{display:block;color:var(--green);font-size:10px;font-weight:800;margin-bottom:1px}.report-kpis{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:10px 0}.report-kpi{background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:8px}.report-kpi span{display:block;color:var(--muted);font-size:10px}.report-kpi b{font-size:15px;color:var(--text);margin-top:3px;display:block}.bar-chart{display:grid;gap:8px;margin:13px 0}.bar-line{display:grid;grid-template-columns:52px 1fr 27px;align-items:center;gap:7px;font-size:10px;color:var(--muted)}.bar-track{height:7px;border-radius:9px;background:#e2e8f0;overflow:hidden}.bar-track i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#1f7a3f,#8ac56d);transition:width .35s}.depot-list{display:grid;gap:7px;margin:10px 0}.depot-card{border:1px solid var(--border);border-radius:8px;padding:9px;background:#f8fafc;display:flex;gap:8px;align-items:center}.depot-icon{width:27px;height:27px;border-radius:50%;display:grid;place-items:center;background:#eef2ff;color:#4f46e5;font-size:14px}.depot-copy{min-width:0;flex:1}.depot-copy strong{display:block;font-size:11px}.depot-copy span{display:block;font-size:10px;color:var(--muted);margin-top:2px}.depot-card button{border:0;background:transparent;color:#64748b;cursor:pointer;font-size:14px;padding:3px}.depot-marker{width:30px;height:30px;border:2px solid #fff;border-radius:50% 50% 50% 0;background:#4f46e5;color:#fff;display:grid;place-items:center;transform:rotate(-45deg);box-shadow:0 3px 8px rgba(15,23,42,.35);font-size:14px}.depot-marker span{transform:rotate(45deg)}
+  </style>
+  <style>
+    .tab-panel{position:fixed;z-index:1001;top:16px;right:16px;width:400px;height:calc(100% - 32px);overflow:auto;padding:16px 18px;border-radius:14px;background:rgba(255,255,255,.91);border:1px solid rgba(255,255,255,.7);box-shadow:0 8px 32px rgba(16,24,40,.12);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+    @media(max-width:980px){.tab-panel{width:360px}.tab-panel~.detail{right:384px}}@media(max-width:720px){.tab-panel{top:auto;bottom:10px;left:10px;right:10px;width:auto;height:54%;padding:12px}.panel-row{grid-template-columns:1fr}.report-kpis{grid-template-columns:1fr 1fr}}
+  </style>
 </head>
 <body>
   <div id="map"><div class="map-fallback"></div></div>
   <div class="header glass"><div class="brand"><span class="brand-mark"></span><b>EcoCycle <small>Detailed Live Tracking</small></b></div><nav class="tabs"><button class="tab active" data-tab="live">Giám sát</button><button class="tab" data-tab="history">Lịch sử lộ trình</button><button class="tab" data-tab="reports">Báo cáo</button><button class="tab" data-tab="management">Quản lý</button></nav></div>
   <aside class="right-panel glass"><div class="profile"><div class="profile-left"><span class="avatar">♙</span><span><strong>Quản trị viên</strong><small>(admin)</small></span></div><button class="logout" id="signOut">Đăng xuất</button></div><section class="layers"><div class="section-head"><span>Lớp bản đồ</span><button class="collapse" id="layersToggle">⌄</button></div><div id="layerItems"><label class="layer"><input type="checkbox" id="actualPath" checked />Lộ trình thực tế (Actual Path)</label><label class="layer"><input type="checkbox" id="liveVehicles" checked />Xe trực tuyến (Live Vehicles)</label><label class="layer"><input type="checkbox" id="allRoutes" checked />Tất cả tuyến (All Routes)</label><div class="style-title"><span>Kiểu bản đồ</span><span>🗺️</span></div><div class="styles"><button class="style-btn active" data-style="streets">Đường phố</button><button class="style-btn" data-style="satellite">Vệ tinh</button><button class="style-btn" data-style="hybrid">Lai (Hybrid)</button><button class="style-btn" data-style="traffic">Giao thông</button></div></div></section><section><div class="section-head"><span id="panelHeading">🛰️ Giám sát trực tuyến</span><button class="collapse" id="panelToggle">⌄</button></div><div id="trackingPanel"><div class="fleet-stats"><div class="stat"><span>🚚</span><label>Tổng xe</label><b>4</b></div><div class="stat"><span>🔋</span><label>Hoạt động</label><b>3</b></div><div class="stat"><span>⚠️</span><label>Cảnh báo</label><b>1</b></div><div class="stat"><span>🚨</span><label>Lệch tuyến</label><b>1</b></div></div><div class="live-box"><header><span>Tiến độ lộ trình trực tiếp</span><span>•••</span></header><div class="search"><span>🔍</span><input id="search" placeholder="Tìm biển số xe..." /></div><div class="vehicle-list" id="vehicleList"></div></div><div class="alerts"><div class="alert-title"><span>Thông báo (2)</span><button id="clearAlerts">Xóa tất cả</button></div><div id="alertList"><div class="alert warning"><span>⚠️</span><div><b>Dừng bất thường</b>65A-002.18 đã dừng 12 phút</div></div><div class="alert critical"><span>🚨</span><div><b>Lệch tuyến</b>65A-008.91 ngoài hành lang tuyến</div></div></div></div></div></section></aside>
+  <section class="tab-panel" id="historyPanel" hidden>
+    <h3>⏱️ Lịch sử lộ trình</h3><p class="panel-copy">Tải GPS theo ngày và phát lại lộ trình trên bản đồ.</p>
+    <div class="panel-row"><label class="panel-field">Ngày giám sát<input id="historyDate" type="date" value="2026-07-15" /></label><label class="panel-field">Phương tiện<select id="historyVehicle"><option value="v1">65A-002.18</option><option value="v2">65A-008.91</option><option value="v4">65A-019.24</option></select></label></div>
+    <div class="panel-actions"><button class="panel-button primary" id="loadHistory">↻ Tải lịch sử</button><button class="panel-button" id="fitHistory">⌖ Xem trên bản đồ</button></div>
+    <div class="history-summary" id="historySummary">Chọn xe và ngày, sau đó tải track GPS đã khớp đường.</div>
+    <div class="history-timeline" id="historyTimeline"></div>
+    <div class="panel-actions"><button class="panel-button primary" id="playHistory">▶ Phát lại lộ trình</button><button class="panel-button" id="resetHistory">↺ Về đầu tuyến</button></div>
+  </section>
+  <section class="tab-panel" id="reportsPanel" hidden>
+    <h3>📊 Báo cáo &amp; Phân tích</h3><p class="panel-copy">KPI vận hành mô phỏng theo khoảng thời gian đã chọn.</p>
+    <div class="panel-row"><label class="panel-field">Từ ngày<input id="reportFrom" type="date" value="2026-07-01" /></label><label class="panel-field">Đến ngày<input id="reportTo" type="date" value="2026-07-15" /></label></div>
+    <div class="panel-actions"><button class="panel-button primary" id="refreshReport">↻ Tải báo cáo</button><button class="panel-button" id="toggleHeatmap">🔥 Hiện heatmap</button><button class="panel-button" id="downloadReport">⇩ Xuất CSV</button></div>
+    <div class="report-kpis"><div class="report-kpi"><span>Tổng quãng đường</span><b id="reportKm">286.4 km</b></div><div class="report-kpi"><span>Điểm dừng</span><b id="reportStops">96</b></div><div class="report-kpi"><span>Xe hoạt động</span><b id="reportVehicles">3 xe</b></div><div class="report-kpi"><span>Cảnh báo</span><b id="reportAlerts">2</b></div></div>
+    <div class="bar-chart" id="reportChart"></div><div class="report-status" id="reportStatus">Dữ liệu demo · chưa kết nối dữ liệu vận hành thật.</div>
+  </section>
+  <section class="tab-panel" id="managementPanel" hidden>
+    <h3>🏢 Quản lý điểm tập kết</h3><p class="panel-copy">Định vị, thêm và quản lý điểm tập kết trên bản đồ.</p>
+    <div class="panel-actions"><button class="panel-button" id="toggleDepots">📍 Ẩn điểm trên bản đồ</button></div><div class="depot-list" id="depotList"></div>
+    <form id="depotForm"><label class="panel-field">Tên điểm tập kết<input id="depotName" maxlength="54" placeholder="Ví dụ: Điểm trung chuyển Ninh Kiều" required /></label><label class="panel-field">Loại điểm<select id="depotType"><option value="transfer">Trung chuyển</option><option value="disposal">Bãi xử lý</option></select></label><button class="panel-button primary" type="submit">＋ Thêm tại tâm bản đồ</button></form>
+    <div class="management-status" id="managementStatus">Điểm thêm mới chỉ tồn tại trong phiên demo này.</div>
+  </section>
   <aside class="layers-card glass"><div class="section-head"><span>Chú giải bản đồ</span></div><label class="layer"><input type="checkbox" checked />Điểm tập kết đề xuất</label><label class="layer"><input type="checkbox" checked />Lớp nhiệt điểm thu gom</label><span style="font-size:11px;color:#687284">Dữ liệu vị trí mô phỏng cho demo</span></aside>
   <aside class="detail glass" id="detail"><div class="detail-head"><div><div class="gps">📡 Giám sát qua GPS SmartLog</div><div class="plate" id="detailPlate">🚚 65A-002.18</div></div><button class="close-detail" id="closeDetail">×</button></div><table class="metrics"><tr><td>Loại xe</td><td>Xe ép rác</td></tr><tr><td>Tuyến hoạt động</td><td id="detailRoute">Tuyến NK-03</td></tr><tr><td>Tốc độ</td><td id="detailSpeed">24 km/h</td></tr><tr><td>Tải trọng</td><td id="detailLoad">62% · 3,100 kg</td></tr><tr><td>Nhiên liệu</td><td>⛽ 88 Lít</td></tr><tr><td>Thời gian cập nhật</td><td id="detailTime">Vừa xong</td></tr></table><button class="message" id="messageDriver">💬 Nhắn tin tài xế</button></aside><span class="sim-note">Demo giao diện · telemetry mô phỏng</span>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -42,6 +70,7 @@
     ];
     let selected = vehicles[0], markers = {}, routes = [], map, tiles;
     const roadRoutes = {};
+    let activeTab = 'live';
     const street = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     const light = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
 
@@ -51,7 +80,7 @@
     function drawRoutes() {
       routes.forEach(route => map.removeLayer(route));
       routes = [];
-      if (!document.getElementById('allRoutes').checked || !document.getElementById('actualPath').checked) return;
+      if (activeTab !== 'live' || !document.getElementById('allRoutes').checked || !document.getElementById('actualPath').checked) return;
       Object.entries(routeSpecs).forEach(([key, spec]) => {
         const geometry = roadRoutes[key];
         if (!geometry?.length) return;
@@ -61,7 +90,7 @@
     function renderMarkers() {
       Object.values(markers).forEach(marker => map.removeLayer(marker));
       markers = {};
-      if (!document.getElementById('liveVehicles').checked) return;
+      if (activeTab !== 'live' || !document.getElementById('liveVehicles').checked) return;
       vehicles.forEach(v => {
         const marker = L.marker([v.lat,v.lng],{icon:icon(v),zIndexOffset:v===selected?100:0}).addTo(map);
         marker.on('click',()=>select(v));
@@ -123,6 +152,7 @@
         vehicles.filter(v=>v.roadRoute).forEach(setRoadPosition);
         await snapIdleVehicle();
         drawRoutes(); renderMarkers(); renderList();
+        if (activeTab === 'history') showHistoryTrack(true);
         note.textContent = 'Lộ trình Snap-to-Road · telemetry mô phỏng';
       } catch (error) {
         note.textContent = 'Không tải được route Snap-to-Road · telemetry mô phỏng';
@@ -168,6 +198,134 @@
     document.querySelectorAll('.tab').forEach(tab => tab.onclick = () => { document.querySelectorAll('.tab').forEach(element=>element.classList.remove('active')); tab.classList.add('active'); document.getElementById('panelHeading').textContent=tab.dataset.tab==='live'?'🛰️ Giám sát trực tuyến':tab.dataset.tab==='history'?'⏱️ Lịch sử lộ trình':tab.dataset.tab==='reports'?'📊 Báo cáo & Phân tích':'🏢 Quản lý điểm tập kết'; });
     document.querySelectorAll('.style-btn').forEach(button => button.onclick = () => { document.querySelectorAll('.style-btn').forEach(element=>element.classList.remove('active')); button.classList.add('active'); tiles.setUrl(button.dataset.style==='streets'?street:light); });
     setup();
+
+    let historyRouteLayer, historyMarker, historyTimer, heatLayer;
+    let depotMarkers = [];
+    let depotsVisible = true;
+    const depots = [
+      {id:'depot-nk',name:'Trạm trung chuyển Ninh Kiều',type:'transfer',lat:10.0376,lng:105.7834},
+      {id:'depot-cr',name:'Bãi xử lý Cái Răng',type:'disposal',lat:10.0026,lng:105.7517}
+    ];
+
+    function clearVehicleMarkers() {
+      Object.values(markers).forEach(marker => map.removeLayer(marker));
+      markers = {};
+    }
+    function clearHistoryLayers() {
+      if (historyTimer) { clearInterval(historyTimer); historyTimer = undefined; }
+      if (historyRouteLayer) { map.removeLayer(historyRouteLayer); historyRouteLayer = undefined; }
+      if (historyMarker) { map.removeLayer(historyMarker); historyMarker = undefined; }
+      const button = document.getElementById('playHistory');
+      if (button) button.textContent = '▶ Phát lại lộ trình';
+    }
+    function selectedHistoryVehicle() {
+      return vehicles.find(vehicle => vehicle.id === document.getElementById('historyVehicle').value) || vehicles[0];
+    }
+    function renderHistoryTimeline(vehicle) {
+      const date = document.getElementById('historyDate').value || '2026-07-15';
+      const routeLength = Math.round((roadRoutes[vehicle.roadRoute]?.length || 0) * 48);
+      const events = [
+        ['07:12','Xe rời điểm tập kết, bắt đầu '+vehicle.route],
+        ['08:04','Hoàn thành điểm thu gom số 06'],
+        ['08:37','Gửi vị trí GPS đã khớp đường'],
+        ['09:16','Hoàn thành 62% lộ trình']
+      ];
+      document.getElementById('historyTimeline').innerHTML = events.map(([time,text]) => `<div class="history-event"><time>${date} · ${time}</time>${text}</div>`).join('');
+      document.getElementById('historySummary').textContent = `${vehicle.plate} · ${vehicle.route} · ${routeLength || 'đang nạp'} m track GPS đã khớp Snap-to-Road.`;
+    }
+    function showHistoryTrack(fit = false) {
+      const vehicle = selectedHistoryVehicle();
+      const geometry = roadRoutes[vehicle.roadRoute];
+      renderHistoryTimeline(vehicle);
+      if (!geometry?.length) return;
+      if (historyRouteLayer) map.removeLayer(historyRouteLayer);
+      if (historyMarker) map.removeLayer(historyMarker);
+      historyRouteLayer = L.polyline(geometry,{color:vehicle.color,weight:5,opacity:.92,lineCap:'round',lineJoin:'round'}).addTo(map);
+      vehicle.routeIndex = 0;
+      setRoadPosition(vehicle);
+      historyMarker = L.marker([vehicle.lat,vehicle.lng],{icon:icon(vehicle),zIndexOffset:250}).addTo(map);
+      if (fit) map.fitBounds(historyRouteLayer.getBounds(),{padding:[70,360]});
+    }
+    function toggleHistoryPlayback() {
+      const button = document.getElementById('playHistory');
+      if (historyTimer) { clearInterval(historyTimer); historyTimer = undefined; button.textContent='▶ Tiếp tục phát lại'; return; }
+      const vehicle = selectedHistoryVehicle();
+      if (!roadRoutes[vehicle.roadRoute]?.length) { document.getElementById('historySummary').textContent='Lộ trình đang nạp, vui lòng thử lại sau ít giây.'; return; }
+      if (!historyMarker) showHistoryTrack(true);
+      button.textContent='❚❚ Tạm dừng';
+      historyTimer = setInterval(() => {
+        advanceVehicle(vehicle,4);
+        historyMarker.setLatLng([vehicle.lat,vehicle.lng]);
+        document.getElementById('historySummary').textContent = `${vehicle.plate} đang phát lại ${vehicle.route} · tốc độ mô phỏng ${vehicle.speed} km/h.`;
+      },650);
+    }
+    function renderReport() {
+      const from = new Date(document.getElementById('reportFrom').value || '2026-07-01');
+      const to = new Date(document.getElementById('reportTo').value || '2026-07-15');
+      const days = Math.max(1,Math.min(31,Math.round((to-from)/86400000)+1));
+      const km = (days * 19.1).toFixed(1), stops = days * 7, alerts = Math.max(1,Math.round(days / 8));
+      document.getElementById('reportKm').textContent = `${km} km`;
+      document.getElementById('reportStops').textContent = String(stops);
+      document.getElementById('reportVehicles').textContent = '3 xe';
+      document.getElementById('reportAlerts').textContent = String(alerts);
+      const values = [{label:'NK-03',value:82},{label:'BT-02',value:67},{label:'CR-01',value:91}];
+      document.getElementById('reportChart').innerHTML = values.map(item => `<div class="bar-line"><span>${item.label}</span><div class="bar-track"><i style="width:${item.value}%"></i></div><b>${item.value}%</b></div>`).join('');
+      document.getElementById('reportStatus').textContent = `Đã tải báo cáo demo cho ${days} ngày · ${km} km · ${alerts} cảnh báo.`;
+    }
+    function toggleHeatmap() {
+      const button = document.getElementById('toggleHeatmap');
+      if (heatLayer) { map.removeLayer(heatLayer); heatLayer = undefined; button.textContent='🔥 Hiện heatmap'; return; }
+      heatLayer = L.layerGroup([[10.042,105.746],[10.05,105.759],[10.034,105.754],[10.057,105.766]].map(([lat,lng],index) => L.circle([lat,lng],{radius:420 + index*90,color:'#f97316',weight:1,fillColor:'#fb7185',fillOpacity:.18}))).addTo(map);
+      button.textContent='🔥 Ẩn heatmap';
+    }
+    function downloadReport() {
+      const lines = ['Tuyen,Hoan thanh,Khoang cach km','NK-03,82%,91.4','BT-02,67%,74.8','CR-01,91%,120.2'];
+      const file = new Blob(['\ufeff'+lines.join('\n')],{type:'text/csv;charset=utf-8'});
+      const link = document.createElement('a'); link.href = URL.createObjectURL(file); link.download = 'ecocycle-report-demo.csv'; link.click(); URL.revokeObjectURL(link.href);
+      document.getElementById('reportStatus').textContent = 'Đã tạo file CSV báo cáo mô phỏng để tải xuống.';
+    }
+    function depotIcon(type) {
+      const color = type === 'disposal' ? '#b91c1c' : '#4f46e5';
+      return L.divIcon({className:'',html:`<div class="depot-marker" style="background:${color}"><span>🏢</span></div>`,iconSize:[30,30],iconAnchor:[15,30]});
+    }
+    function syncDepotMarkers() {
+      depotMarkers.forEach(marker => map.removeLayer(marker)); depotMarkers = [];
+      if (activeTab !== 'management' || !depotsVisible) return;
+      depotMarkers = depots.map(depot => L.marker([depot.lat,depot.lng],{icon:depotIcon(depot.type)}).addTo(map).bindTooltip(depot.name,{direction:'top'}));
+    }
+    function renderDepots() {
+      const list = document.getElementById('depotList');
+      list.innerHTML = depots.map(depot => `<div class="depot-card"><span class="depot-icon">${depot.type==='disposal'?'♻':'🏢'}</span><span class="depot-copy"><strong>${depot.name}</strong><span>${depot.type==='disposal'?'Bãi xử lý':'Trung chuyển'} · ${depot.lat.toFixed(4)}, ${depot.lng.toFixed(4)}</span></span><button data-focus="${depot.id}" title="Định vị">⌖</button><button data-remove="${depot.id}" title="Xóa">×</button></div>`).join('');
+      list.querySelectorAll('[data-focus]').forEach(button => button.onclick = () => { const depot=depots.find(item=>item.id===button.dataset.focus); if (depot) map.setView([depot.lat,depot.lng],15); });
+      list.querySelectorAll('[data-remove]').forEach(button => button.onclick = () => { const index=depots.findIndex(item=>item.id===button.dataset.remove); if (index >= 0) { depots.splice(index,1); renderDepots(); syncDepotMarkers(); document.getElementById('managementStatus').textContent='Đã xóa điểm khỏi phiên demo.'; } });
+    }
+    function activateTab(tab) {
+      activeTab = tab;
+      document.querySelectorAll('.tab').forEach(button => button.classList.toggle('active',button.dataset.tab===tab));
+      document.querySelector('.right-panel').hidden = tab !== 'live';
+      document.getElementById('historyPanel').hidden = tab !== 'history';
+      document.getElementById('reportsPanel').hidden = tab !== 'reports';
+      document.getElementById('managementPanel').hidden = tab !== 'management';
+      document.getElementById('detail').classList.toggle('hidden',tab !== 'live');
+      drawRoutes();
+      if (tab === 'live') renderMarkers(); else clearVehicleMarkers();
+      if (tab === 'history') showHistoryTrack(true); else clearHistoryLayers();
+      if (tab === 'reports') renderReport();
+      if (tab !== 'reports' && heatLayer) { map.removeLayer(heatLayer); heatLayer = undefined; document.getElementById('toggleHeatmap').textContent='🔥 Hiện heatmap'; }
+      if (tab === 'management') { renderDepots(); syncDepotMarkers(); } else syncDepotMarkers();
+    }
+    document.querySelectorAll('.tab').forEach(tab => tab.onclick = () => activateTab(tab.dataset.tab));
+    document.getElementById('loadHistory').onclick = () => { clearHistoryLayers(); showHistoryTrack(true); };
+    document.getElementById('fitHistory').onclick = () => showHistoryTrack(true);
+    document.getElementById('playHistory').onclick = toggleHistoryPlayback;
+    document.getElementById('resetHistory').onclick = () => { clearHistoryLayers(); showHistoryTrack(false); };
+    document.getElementById('historyVehicle').onchange = () => { clearHistoryLayers(); showHistoryTrack(true); };
+    document.getElementById('historyDate').onchange = () => renderHistoryTimeline(selectedHistoryVehicle());
+    document.getElementById('refreshReport').onclick = renderReport;
+    document.getElementById('toggleHeatmap').onclick = toggleHeatmap;
+    document.getElementById('downloadReport').onclick = downloadReport;
+    document.getElementById('toggleDepots').onclick = () => { depotsVisible=!depotsVisible; document.getElementById('toggleDepots').textContent=depotsVisible?'📍 Ẩn điểm trên bản đồ':'📍 Hiện điểm trên bản đồ'; syncDepotMarkers(); };
+    document.getElementById('depotForm').onsubmit = event => { event.preventDefault(); const name=document.getElementById('depotName').value.trim(); if (!name) return; const center=map.getCenter(); depots.push({id:`depot-${Date.now()}`,name,type:document.getElementById('depotType').value,lat:center.lat,lng:center.lng}); document.getElementById('depotName').value=''; renderDepots(); syncDepotMarkers(); document.getElementById('managementStatus').textContent=`Đã thêm ${name} tại tâm bản đồ (dữ liệu phiên demo).`; };
   </script>
 </body>
 </html>
