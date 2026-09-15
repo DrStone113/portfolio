@@ -171,7 +171,8 @@
     raf = requestAnimationFrame(() => { raf = 0; updateStory(); });
   }
 
-  Promise.all(Object.entries(assets).map(([key, path]) => load(key, path))).then(() => { resize(); updateStory(); });
+  const assetEntries = Object.entries(assets).filter(([key]) => !usePersistentGuide || key !== 'runner');
+  Promise.all(assetEntries.map(([key, path]) => load(key, path))).then(() => { resize(); updateStory(); });
   window.addEventListener('resize', resize, { passive: true });
   window.addEventListener('scroll', requestUpdate, { passive: true });
   updateStory();

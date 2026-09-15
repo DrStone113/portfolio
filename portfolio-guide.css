@@ -218,6 +218,31 @@
 }
 
 /* Inventory, verified quest log, and final resting platform. */
+.mission-level .level-heading,
+.skill-level .level-heading,
+.quest-level .level-heading {
+  grid-template-areas:
+    "kicker aside"
+    "title aside";
+  grid-template-columns: minmax(0, 1fr) 320px;
+  align-items: end;
+  max-width: 1180px;
+}
+.mission-level { overflow: hidden; }
+#pixel-story,
+#missions,
+#skills,
+#journey,
+#contact { scroll-margin-top: 68px; }
+.mission-level .level-heading .pixel-kicker,
+.skill-level .level-heading .pixel-kicker,
+.quest-level .level-heading .pixel-kicker { grid-area: kicker; }
+.mission-level .level-heading h2,
+.skill-level .level-heading h2,
+.quest-level .level-heading h2 { grid-area: title; }
+.mission-level .mission-meta { grid-area: aside; }
+.quest-level .level-heading > p:last-child { grid-area: aside; }
+
 .inventory-terminal {
   display: flex;
   align-items: center;
@@ -354,6 +379,13 @@
 }
 
 @media (max-width: 980px) {
+  .mission-level .level-heading,
+  .skill-level .level-heading,
+  .quest-level .level-heading {
+    grid-template-areas: "kicker" "title" "aside";
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
   .quest-level { padding-right: 24px; padding-left: 24px; }
   .quest-track { grid-template-columns: 1fr; padding: 8px 0 0 34px; }
   .quest-track::before { top: 20px; bottom: 30px; left: 46px; width: 2px; height: auto; background: linear-gradient(var(--aqua) 0 69%, var(--lime) 69% 82%, rgba(216, 244, 106, .2) 82%); }
@@ -369,7 +401,7 @@
   .quest-track { padding-left: 12px; }
   .quest-track::before { left: 24px; }
   .quest-track article { padding-left: 53px; }
-  .contact-level { min-height: 760px; padding-bottom: 310px; }
+  .contact-level { min-height: 800px; padding-top: 110px; padding-bottom: 310px; }
   .contact-level > .contact-rest { right: 20px; bottom: 38px; left: 20px; width: auto; height: 235px; opacity: 1; }
   .character-anchor--contact { left: 30px; width: 72px; height: 72px; }
   .pixel-campfire { left: 145px; }
