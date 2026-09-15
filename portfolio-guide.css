@@ -156,6 +156,29 @@
 
 .pixel-button.is-emphasized { animation: pixel-cta-ready 800ms steps(2) 2; }
 
+.story-checkpoint {
+  position: absolute;
+  z-index: 3;
+  top: 82px;
+  right: max(22px, calc((100vw - 1240px) / 2));
+  padding: 9px 10px;
+  border: 2px solid var(--lime);
+  background: #071923;
+  box-shadow: 4px 4px 0 rgba(4, 17, 27, .65);
+  color: var(--lime);
+  font-family: var(--pixel);
+  font-size: 7px;
+  opacity: 0;
+  transform: translateY(7px);
+  transition: opacity 160ms linear, transform 160ms steps(3);
+}
+.story-checkpoint[hidden] { display: none; }
+.story-checkpoint.is-visible { opacity: 1; transform: none; }
+.boss-mission.is-guide-active,
+.mission-card.is-guide-active { border-color: var(--lime); box-shadow: 9px 9px 0 #061923, 0 0 0 2px rgba(216, 244, 106, .16); }
+.mission-card:focus-visible { outline: 3px solid var(--lime); outline-offset: 4px; }
+.boss-mission:focus-within { border-color: var(--lime); }
+
 @keyframes pixel-guide-frames { to { background-position: var(--sprite-end) 0; } }
 @keyframes pixel-guide-walk-bob { 50% { transform: scale(var(--guide-scale)) translateY(-1px); } }
 @keyframes pixel-guide-run-bob { 50% { transform: scale(var(--guide-scale)) translateY(-2px); } }
@@ -177,6 +200,7 @@
   .pixel-guide__dust,
   .pixel-button.is-emphasized { animation: none !important; }
   .pixel-dialogue { transition: none; }
+  .story-checkpoint { transition: none; }
 }
 
 @media (max-width: 980px) {
@@ -190,4 +214,5 @@
   .pixel-dialogue p { font-size: 10px; }
   .launch-role { font-size: 10px; line-height: 1.6; }
   .launch-actions .pixel-button { width: 100%; }
+  .story-checkpoint { top: 64px; right: 20px; font-size: 6px; }
 }

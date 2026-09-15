@@ -7,10 +7,13 @@
   const heroWorld = document.querySelector('.launch-world');
   const heroAnchor = document.getElementById('heroCharacterAnchor');
   const story = document.getElementById('pixel-story');
+  const storyCheckpoint = document.getElementById('storyCheckpoint');
+  const missions = document.getElementById('missions');
+  const projectTargets = [...document.querySelectorAll('[data-guide-comment]')];
   const startButton = document.getElementById('startAdventure');
   const skipButton = document.getElementById('skipIntro');
   const replayButton = document.getElementById('replayIntro');
-  if (!characterElement || !dialogueElement || !hero || !heroWorld || !heroAnchor || !story) return;
+  if (!characterElement || !dialogueElement || !hero || !heroWorld || !heroAnchor || !story || !storyCheckpoint || !missions) return;
   if (!window.PortfolioCharacter || !window.PortfolioDialogue) return;
 
   const { CharacterController, MOTION } = window.PortfolioCharacter;
@@ -31,6 +34,12 @@
   let introRunning = false;
   let scrollRaf = 0;
   let storyProgress = 0;
+  let storyNarrationStage = -1;
+  let decorationToken = 0;
+  let projectHoverTimer = 0;
+  let activeProject = null;
+  let narrationSuppressed = false;
+  const startedBelowHero = window.scrollY > INTRO_SCROLL_CANCEL;
 
   const messages = [
     { text: 'Hey!', duration: 300 },
@@ -122,6 +131,28 @@
     character.setVisible(true).face('right').placeAt(position.x, position.y, {
       state: reducedMotionQuery.matches ? 'idle' : storyState(storyProgress)
     });
+    dialogue.reposition();
+  }
+
+  function missionPosition(target = activeProject || missions) {
+    const size = guideSize();
+    const rect = target.getBoundingClientRect();
+    if (window.innerWidth <= 640) {
+      return {
+        x: 12,
+        y: clamp(rect.top - size - 12, 70, window.innerHeight - size - 18)
+      };
+    }
+    return {
+      x: window.innerWidth - size - 14,
+      y: clamp(rect.top + 26, 82, window.innerHeight - size - 20)
+    };
+  }
+
+  function syncToMissions() {
+    const position = missionPosition();
+    character.setVisible(true).face('left').placeAt(position.x, position.y, { state: 'idle' });
+    dialogue.reposition();
   }
 
   function syncAcrossHeroGap() {
@@ -162,10 +193,83 @@
   function syncCharacterToScroll() {
     const heroRect = hero.getBoundingClientRect();
     const storyRect = story.getBoundingClientRect();
+    const missionRect = missions.getBoundingClientRect();
     if (heroRect.bottom > window.innerHeight * .62) syncToHero();
     else if (storyRect.top > 0) syncAcrossHeroGap();
     else if (storyRect.bottom > 0) syncToStory();
+    else if (missionRect.top < window.innerHeight && missionRect.bottom > 68) syncToMissions();
     else character.setVisible(false);
+  }
+
+  function sayDecoration(text, options = {}) {
+    const token = ++decorationToken;
+    return dialogue.say(text, {
+      anchor: characterRect,
+      typingSpeed: options.typingSpeed ?? 20,
+      duration: options.duration ?? 1050,
+      instant: reducedMotionQuery.matches
+    }).then(completed => {
+      if (completed && token === decorationToken) dialogue.hide();
+      return completed;
+    });
+  }
+
+  function updateStoryNarration(progress) {
+    if (narrationSuppressed || startedBelowHero) {
+      storyCheckpoint.hidden = true;
+      storyNarrationStage = 2;
+      return;
+    }
+    if (progress < .1 && storyNarrationStage < 0) {
+      storyNarrationStage = 0;
+      storyCheckpoint.hidden = false;
+      window.requestAnimationFrame(() => storyCheckpoint.classList.add('is-visible'));
+      sayDecoration('Every project starts with a problem.', { duration: 850 });
+    } else if (progress >= .14 && storyNarrationStage < 1) {
+      storyNarrationStage = 1;
+      storyCheckpoint.classList.remove('is-visible');
+      storyCheckpoint.hidden = true;
+      sayDecoration('Let me show you how I solved some of them.', { duration: 950 });
+    } else if (progress > .34) {
+      storyCheckpoint.classList.remove('is-visible');
+      storyCheckpoint.hidden = true;
+    }
+  }
+
+  function reactToProject(target) {
+    activeProject = target;
+    projectTargets.forEach(project => project.classList.toggle('is-guide-active', project === target));
+    const destination = missionPosition(target);
+    const targetRect = target.getBoundingClientRect();
+    const currentCenter = character.position.x + guideSize() / 2;
+    const direction = targetRect.left + targetRect.width / 2 < currentCenter ? 'left' : 'right';
+    character.setVisible(true).face(direction);
+    const shortX = clamp(destination.x + (direction === 'left' ? -18 : 18), 10, window.innerWidth - guideSize() - 10);
+    character.moveTo(shortX, destination.y, {
+      duration: reducedMotionQuery.matches ? 0 : 280,
+      state: 'walk',
+      endState: 'idle'
+    }).then(completed => {
+      if (completed && activeProject === target) {
+        sayDecoration(target.dataset.guideComment, { duration: 1100 });
+      }
+    });
+  }
+
+  function scheduleProjectReaction(target) {
+    window.clearTimeout(projectHoverTimer);
+    projectHoverTimer = window.setTimeout(() => reactToProject(target), 140);
+  }
+
+  function clearProjectReaction(target) {
+    window.clearTimeout(projectHoverTimer);
+    projectHoverTimer = 0;
+    if (target.contains(document.activeElement) || target.matches(':hover')) return;
+    if (activeProject === target) activeProject = null;
+    target.classList.remove('is-guide-active');
+    decorationToken += 1;
+    dialogue.hide();
+    requestScrollSync();
   }
 
   function cancelIntro({ remember = true } = {}) {
@@ -223,6 +327,7 @@
   }
 
   function showProjects() {
+    narrationSuppressed = true;
     completeIntro({ remember: true, sync: true });
     document.getElementById('missions')?.scrollIntoView({
       behavior: reducedMotionQuery.matches ? 'auto' : 'smooth',
@@ -267,7 +372,14 @@
     storyProgress = clamp(event.detail?.progress || 0);
     if (!introRunning && story.getBoundingClientRect().top <= 0 && story.getBoundingClientRect().bottom > 0) {
       syncToStory();
+      updateStoryNarration(storyProgress);
     }
+  });
+  projectTargets.forEach(target => {
+    target.addEventListener('mouseenter', () => scheduleProjectReaction(target));
+    target.addEventListener('mouseleave', () => clearProjectReaction(target));
+    target.addEventListener('focusin', () => scheduleProjectReaction(target));
+    target.addEventListener('focusout', () => window.setTimeout(() => clearProjectReaction(target), 0));
   });
   reducedMotionQuery.addEventListener?.('change', event => {
     character.setReducedMotion(event.matches);
@@ -275,10 +387,9 @@
     else requestScrollSync();
   });
 
-  const startsBelowHero = window.scrollY > INTRO_SCROLL_CANCEL;
-  if (startsBelowHero || sessionHasSeenIntro() || reducedMotionQuery.matches) {
-    completeIntro({ remember: startsBelowHero || sessionHasSeenIntro(), sync: true });
-    if (reducedMotionQuery.matches && !startsBelowHero) {
+  if (startedBelowHero || sessionHasSeenIntro() || reducedMotionQuery.matches) {
+    completeIntro({ remember: startedBelowHero || sessionHasSeenIntro(), sync: true });
+    if (reducedMotionQuery.matches && !startedBelowHero) {
       dialogue.say("I'm Khang — I build full-stack, real-time & mobile systems.", {
         anchor: characterRect,
         instant: true,
@@ -291,6 +402,7 @@
     cancelIntro({ remember: false });
     dialogue.destroy();
     character.destroy();
+    window.clearTimeout(projectHoverTimer);
     if (scrollRaf) window.cancelAnimationFrame(scrollRaf);
   }, { once: true });
 })();
