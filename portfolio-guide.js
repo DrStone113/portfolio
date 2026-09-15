@@ -10,10 +10,17 @@
   const storyCheckpoint = document.getElementById('storyCheckpoint');
   const missions = document.getElementById('missions');
   const projectTargets = [...document.querySelectorAll('[data-guide-comment]')];
+  const skills = document.getElementById('skills');
+  const inventoryTerminal = document.getElementById('inventoryTerminal');
+  const quest = document.getElementById('journey');
+  const questTrack = document.getElementById('questTrack');
+  const questMilestones = [...document.querySelectorAll('.quest-track article')];
+  const contact = document.getElementById('contact');
+  const contactAnchor = document.getElementById('contactCharacterAnchor');
   const startButton = document.getElementById('startAdventure');
   const skipButton = document.getElementById('skipIntro');
   const replayButton = document.getElementById('replayIntro');
-  if (!characterElement || !dialogueElement || !hero || !heroWorld || !heroAnchor || !story || !storyCheckpoint || !missions) return;
+  if (!characterElement || !dialogueElement || !hero || !heroWorld || !heroAnchor || !story || !storyCheckpoint || !missions || !skills || !inventoryTerminal || !quest || !questTrack || !contact || !contactAnchor) return;
   if (!window.PortfolioCharacter || !window.PortfolioDialogue) return;
 
   const { CharacterController, MOTION } = window.PortfolioCharacter;
@@ -39,6 +46,12 @@
   let projectHoverTimer = 0;
   let activeProject = null;
   let narrationSuppressed = false;
+  let skillsOpened = false;
+  let contactAnnounced = false;
+  let currentScene = 'hero';
+  let lastScrollY = window.scrollY;
+  let scrollDirection = 'right';
+  let scrollStopTimer = 0;
   const startedBelowHero = window.scrollY > INTRO_SCROLL_CANCEL;
 
   const messages = [
@@ -99,6 +112,7 @@
   }
 
   function syncToHero() {
+    currentScene = 'hero';
     const heroRect = hero.getBoundingClientRect();
     const anchor = anchorPosition();
     const visible = heroRect.bottom > 68 && anchor.y > -100 && anchor.y < window.innerHeight;
@@ -127,8 +141,9 @@
   }
 
   function syncToStory() {
+    currentScene = 'story';
     const position = storyPosition(storyProgress);
-    character.setVisible(true).face('right').placeAt(position.x, position.y, {
+    character.setVisible(true).face(scrollDirection).placeAt(position.x, position.y, {
       state: reducedMotionQuery.matches ? 'idle' : storyState(storyProgress)
     });
     dialogue.reposition();
@@ -150,9 +165,95 @@
   }
 
   function syncToMissions() {
+    currentScene = 'missions';
     const position = missionPosition();
     character.setVisible(true).face('left').placeAt(position.x, position.y, { state: 'idle' });
     dialogue.reposition();
+  }
+
+  function skillsPosition() {
+    const size = guideSize();
+    const rect = inventoryTerminal.getBoundingClientRect();
+    if (window.innerWidth <= 640) {
+      return { x: 14, y: clamp(rect.top - size - 10, 68, window.innerHeight - size - 16) };
+    }
+    return {
+      x: window.innerWidth - size - 16,
+      y: clamp(rect.top - size + 8, 78, window.innerHeight - size - 18)
+    };
+  }
+
+  function syncToSkills() {
+    currentScene = 'skills';
+    const position = skillsPosition();
+    if (!skillsOpened) {
+      skillsOpened = true;
+      skills.classList.add('inventory-open');
+      inventoryTerminal.classList.add('is-open');
+      const status = inventoryTerminal.querySelector('i');
+      if (status) status.textContent = 'OPEN';
+      character.setVisible(true).face('right').placeAt(position.x - (reducedMotionQuery.matches ? 0 : 46), position.y, { state: 'walk' });
+      character.moveTo(position.x, position.y, {
+        duration: reducedMotionQuery.matches ? 0 : 360,
+        state: 'walk',
+        endState: 'idle'
+      });
+      return;
+    }
+    if (!character.motion) character.setVisible(true).face('left').placeAt(position.x, position.y, { state: 'idle' });
+    dialogue.reposition();
+  }
+
+  function questProgress() {
+    const rect = quest.getBoundingClientRect();
+    return clamp((window.innerHeight * .7 - rect.top) / Math.max(rect.height + window.innerHeight * .25, 1));
+  }
+
+  function syncToQuest() {
+    currentScene = 'quest';
+    const size = guideSize();
+    const progress = questProgress();
+    const activeIndex = Math.min(questMilestones.length - 1, Math.floor(progress * questMilestones.length));
+    questMilestones.forEach((milestone, index) => milestone.classList.toggle('is-active', index === activeIndex));
+    let x;
+    let y;
+    if (window.innerWidth <= 980) {
+      const activeRect = questMilestones[activeIndex].getBoundingClientRect();
+      x = window.innerWidth <= 640 ? 8 : 20;
+      y = clamp(activeRect.top + 8, 76, window.innerHeight - size - 18);
+    } else {
+      const trackRect = questTrack.getBoundingClientRect();
+      x = lerp(trackRect.left + 8, trackRect.right - size - 8, progress);
+      y = clamp(trackRect.top - size + 30, 78, window.innerHeight - size - 18);
+    }
+    character.setVisible(true).face(scrollDirection).placeAt(x, y, {
+      state: reducedMotionQuery.matches ? 'idle' : 'walk'
+    });
+    window.clearTimeout(scrollStopTimer);
+    scrollStopTimer = window.setTimeout(() => {
+      if (currentScene === 'quest') character.setState('idle');
+    }, 150);
+    dialogue.reposition();
+  }
+
+  function contactPosition() {
+    const size = guideSize();
+    const rect = contactAnchor.getBoundingClientRect();
+    return {
+      x: clamp(rect.left, 12, window.innerWidth - size - 12),
+      y: clamp(rect.top, 76, window.innerHeight - size - 18)
+    };
+  }
+
+  function syncToContact() {
+    currentScene = 'contact';
+    const position = contactPosition();
+    character.setVisible(true).face('right').placeAt(position.x, position.y, { state: 'sit' });
+    dialogue.reposition();
+    if (!contactAnnounced && contact.getBoundingClientRect().top < window.innerHeight * .5) {
+      contactAnnounced = true;
+      sayDecoration("I'm currently looking for opportunities\nto build useful things with good people.", { duration: 1500 });
+    }
   }
 
   function syncAcrossHeroGap() {
@@ -194,10 +295,16 @@
     const heroRect = hero.getBoundingClientRect();
     const storyRect = story.getBoundingClientRect();
     const missionRect = missions.getBoundingClientRect();
+    const skillsRect = skills.getBoundingClientRect();
+    const questRect = quest.getBoundingClientRect();
+    const contactRect = contact.getBoundingClientRect();
     if (heroRect.bottom > window.innerHeight * .62) syncToHero();
     else if (storyRect.top > 0) syncAcrossHeroGap();
     else if (storyRect.bottom > 0) syncToStory();
     else if (missionRect.top < window.innerHeight && missionRect.bottom > 68) syncToMissions();
+    else if (skillsRect.top < window.innerHeight && skillsRect.bottom > 68) syncToSkills();
+    else if (questRect.top < window.innerHeight && questRect.bottom > 68) syncToQuest();
+    else if (contactRect.top < window.innerHeight && contactRect.bottom > 68) syncToContact();
     else character.setVisible(false);
   }
 
@@ -339,6 +446,9 @@
     if (scrollRaf) return;
     scrollRaf = window.requestAnimationFrame(() => {
       scrollRaf = 0;
+      const nextScrollY = window.scrollY;
+      if (nextScrollY !== lastScrollY) scrollDirection = nextScrollY < lastScrollY ? 'left' : 'right';
+      lastScrollY = nextScrollY;
       if (introRunning && window.scrollY > INTRO_SCROLL_CANCEL) {
         completeIntro({ remember: true, sync: true });
         return;
@@ -403,6 +513,7 @@
     dialogue.destroy();
     character.destroy();
     window.clearTimeout(projectHoverTimer);
+    window.clearTimeout(scrollStopTimer);
     if (scrollRaf) window.cancelAnimationFrame(scrollRaf);
   }, { once: true });
 })();

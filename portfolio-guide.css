@@ -216,3 +216,162 @@
   .launch-actions .pixel-button { width: 100%; }
   .story-checkpoint { top: 64px; right: 20px; font-size: 6px; }
 }
+
+/* Inventory, verified quest log, and final resting platform. */
+.inventory-terminal {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin: -18px 0 18px;
+  padding: 0 14px;
+  border: 1px solid rgba(216, 244, 106, .3);
+  background: #0b2d33;
+  box-shadow: 4px 4px 0 #071c22;
+  color: #b9d4cb;
+  font-family: var(--pixel);
+  font-size: 7px;
+}
+.inventory-terminal span {
+  width: 8px;
+  height: 8px;
+  background: #637a72;
+  box-shadow: 0 0 0 4px rgba(99, 122, 114, .12);
+}
+.inventory-terminal i { margin-left: auto; color: #78978d; font-style: normal; }
+.inventory-terminal.is-open { border-color: rgba(216, 244, 106, .72); }
+.inventory-terminal.is-open span { background: var(--lime); box-shadow: 0 0 0 4px rgba(216, 244, 106, .14), 0 0 12px var(--lime); }
+.inventory-terminal.is-open i { color: var(--lime); }
+.js-scroll .skill-level:not(.inventory-open) .skill-tree article { opacity: 0; transform: translateY(8px); }
+.js-scroll .skill-level.inventory-open .skill-tree article { opacity: 1; transform: none; transition: opacity 420ms linear, transform 420ms steps(5); }
+.js-scroll .skill-level.inventory-open .skill-tree article:nth-child(2) { transition-delay: 70ms; }
+.js-scroll .skill-level.inventory-open .skill-tree article:nth-child(3) { transition-delay: 140ms; }
+
+.quest-level {
+  position: relative;
+  overflow: hidden;
+  padding: 110px max(22px, calc((100vw - 1240px) / 2)) 125px;
+  background: #0d3037;
+  background-image: linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.quest-level::after {
+  content: "QUEST LOG // VERIFIED BUILDS";
+  position: absolute;
+  right: 4%;
+  bottom: 27px;
+  color: rgba(216, 244, 106, .15);
+  font-family: var(--pixel);
+  font-size: 7px;
+}
+.quest-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
+  padding-top: 38px;
+}
+.quest-track::before {
+  content: "";
+  position: absolute;
+  top: 51px;
+  right: 7%;
+  left: 7%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--aqua) 0 69%, var(--lime) 69% 82%, rgba(216, 244, 106, .2) 82%);
+}
+.quest-track article {
+  position: relative;
+  min-height: 210px;
+  padding: 0 23px 20px;
+  border-right: 1px solid rgba(222, 255, 239, .12);
+}
+.quest-track article:last-child { border-right: 0; }
+.quest-track article > span { color: #b9d4cb; font-family: var(--pixel); font-size: 7px; }
+.quest-track article > i {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin: 17px 0 23px;
+  border: 2px solid var(--aqua);
+  background: #0d3037;
+  color: var(--aqua);
+  font-family: var(--pixel);
+  font-size: 8px;
+  font-style: normal;
+}
+.quest-track article.is-current > i { border-color: var(--lime); color: var(--lime); box-shadow: 0 0 0 5px rgba(216, 244, 106, .1); animation: quest-current 1.8s steps(2) infinite; }
+.quest-track article.is-future > i { border-color: #6f8a82; color: #87a29a; }
+.quest-track article.is-active > i { box-shadow: 0 0 0 6px rgba(216, 244, 106, .14), 4px 4px 0 #061923; }
+.quest-track h3 { margin: 0 0 9px; font-size: 17px; letter-spacing: -.04em; }
+.quest-track p { margin: 0; color: #bcd4cc; font-size: 11px; line-height: 1.65; }
+
+.contact-level { min-height: 620px; }
+.contact-level .contact-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+.contact-level > .contact-rest {
+  position: absolute;
+  z-index: -1;
+  right: max(20px, calc((100vw - 1240px) / 2));
+  bottom: 0;
+  display: block;
+  width: 390px;
+  height: 250px;
+  margin: 0;
+  pointer-events: none;
+}
+.contact-rest::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 38px;
+  left: 0;
+  height: 22px;
+  border: 2px solid #152d28;
+  background: linear-gradient(#7ebf53 0 24%, #336f3b 24% 58%, #1b4e39 58%);
+  box-shadow: 0 7px 0 rgba(3, 13, 18, .4);
+}
+.character-anchor--contact { position: absolute; bottom: 60px; left: 52px; width: 96px; height: 96px; }
+.pixel-campfire { position: absolute; bottom: 60px; left: 205px; width: 34px; height: 42px; }
+.pixel-campfire::before,
+.pixel-campfire::after { content: ""; position: absolute; bottom: 0; width: 22px; height: 6px; background: #6f4635; }
+.pixel-campfire::before { left: 2px; transform: rotate(24deg); }
+.pixel-campfire::after { right: 2px; transform: rotate(-24deg); }
+.pixel-campfire i { position: absolute; bottom: 8px; left: 9px; width: 17px; height: 25px; background: #ef946c; clip-path: polygon(50% 0, 100% 58%, 77% 100%, 20% 100%, 0 57%); animation: campfire-flicker 520ms steps(3) infinite; }
+.pixel-campfire i::after { content: ""; position: absolute; right: 5px; bottom: 0; width: 8px; height: 14px; background: #f3cc65; }
+.exit-sign { position: absolute; right: 7px; bottom: 75px; color: var(--lime); font-family: var(--pixel); font-size: 8px; line-height: 1.7; text-align: right; }
+.exit-sign small { color: #9dbab2; font-family: var(--mono); font-size: 8px; }
+
+@keyframes quest-current { 50% { opacity: .72; } }
+@keyframes campfire-flicker { 50% { transform: scaleX(.82) translateY(2px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .quest-track article.is-current > i,
+  .pixel-campfire i { animation: none; }
+  .js-scroll .skill-level .skill-tree article { opacity: 1; transform: none; transition: none; }
+}
+
+@media (max-width: 980px) {
+  .quest-level { padding-right: 24px; padding-left: 24px; }
+  .quest-track { grid-template-columns: 1fr; padding: 8px 0 0 34px; }
+  .quest-track::before { top: 20px; bottom: 30px; left: 46px; width: 2px; height: auto; background: linear-gradient(var(--aqua) 0 69%, var(--lime) 69% 82%, rgba(216, 244, 106, .2) 82%); }
+  .quest-track article { min-height: 130px; padding: 0 0 26px 43px; border-right: 0; }
+  .quest-track article > i { position: absolute; top: 4px; left: -1px; margin: 0; }
+  .quest-track article > span { display: block; margin-bottom: 10px; }
+  .contact-level > .contact-rest { right: 24px; width: 330px; opacity: .75; }
+}
+
+@media (max-width: 640px) {
+  .inventory-terminal { margin-top: 0; font-size: 6px; }
+  .quest-level { padding: 72px 20px 90px; }
+  .quest-track { padding-left: 12px; }
+  .quest-track::before { left: 24px; }
+  .quest-track article { padding-left: 53px; }
+  .contact-level { min-height: 760px; padding-bottom: 310px; }
+  .contact-level > .contact-rest { right: 20px; bottom: 38px; left: 20px; width: auto; height: 235px; opacity: 1; }
+  .character-anchor--contact { left: 30px; width: 72px; height: 72px; }
+  .pixel-campfire { left: 145px; }
+  .exit-sign small { display: none; }
+}
